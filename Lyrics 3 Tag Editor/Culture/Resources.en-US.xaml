@@ -1,0 +1,103 @@
+﻿ <ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <!--App-->
+    <system:String x:Key="app_title">Lyrics 3 Tag Editor</system:String>
+    <system:String x:Key="app_description">Lyrics 3 Tag Editor is a software that allows you to read, write and view the Lyrics3v2 tag. It contains many features to make it easier to use: Add, Remove, Delete, Sort, Synchronize, etc ...</system:String>
+    <system:String x:Key="app_author">MariusBinary</system:String>
+
+    <!--Labels-->
+    <system:String x:Key="add">Add</system:String>
+    <system:String x:Key="remove">Remove</system:String>
+    <system:String x:Key="clear">Clear</system:String>
+    <system:String x:Key="sort">Sort</system:String>
+    <system:String x:Key="remove_all">Remove All</system:String>
+     
+    <system:String x:Key="status">Status</system:String>
+    <system:String x:Key="time">Time</system:String>
+    <system:String x:Key="lyrics">Lyrics</system:String>
+     
+    <system:String x:Key="slideshow">Slideshow</system:String>
+    <system:String x:Key="tags">Tags</system:String>
+     
+    <system:String x:Key="file">File</system:String>
+    <system:String x:Key="saving">Saving</system:String>
+    <system:String x:Key="layout">Layout</system:String>
+    <system:String x:Key="drag_and_drop">Drag and Drop</system:String>
+    <system:String x:Key="import">Import</system:String>
+    <system:String x:Key="export">Export</system:String>
+    <system:String x:Key="playback">Playback</system:String>
+    <system:String x:Key="output">Output</system:String>
+    <system:String x:Key="activation">Output</system:String>
+     
+    <!--Settings-->
+    <system:String x:Key="set_allow_original_file">Save a copy of original file (if it has no lyrics).</system:String>
+    <system:String x:Key="set_allow_auto_sort">Sort automatically the lyrics before saving.</system:String>
+    <system:String x:Key="set_allow_empty_rows">Allow empty lyrics rows (if it has the time).</system:String>
+    <system:String x:Key="set_allow_row_status">Show row status on lyrics table.</system:String>
+    <system:String x:Key="set_allow_import_blank_lines">Remove empty lines (if it present).</system:String>
+    <system:String x:Key="set_allow_import_time">Import the lyrics with time (if avaible).</system:String>
+    <system:String x:Key="set_allow_export_time">Export the lyrics preceded by time.</system:String>
+    <system:String x:Key="set_allow_files_drag_and_drop">Allow files to be opened if dragged and dropped on the program.</system:String>
+    <system:String x:Key="set_player_autoplay">Autoplay</system:String>
+
+    <!--Menu-->
+    <system:String x:Key="menu_file">File</system:String>
+    <system:String x:Key="menu_lyrics">Lyrics</system:String>
+    <system:String x:Key="menu_info">Information</system:String>
+    <system:String x:Key="menu_edit">Edit</system:String>
+    <system:String x:Key="menu_general">General</system:String>
+    <system:String x:Key="menu_aspect">Aspect</system:String>
+    <system:String x:Key="menu_audio">Audio</system:String>
+    <system:String x:Key="menu_controls">Controls</system:String>
+
+    <!--Items-->
+    <system:String x:Key="item_open">Open</system:String>
+    <system:String x:Key="item_recent">Recent</system:String>
+    <system:String x:Key="item_save">Save</system:String>
+    <system:String x:Key="item_save_as">Save As</system:String>
+    <system:String x:Key="item_settings">Settings</system:String>
+    <system:String x:Key="item_exit">Exit</system:String>
+    <system:String x:Key="item_import">Import</system:String>
+    <system:String x:Key="item_export">Export</system:String>
+    <system:String x:Key="item_refresh">Refresh</system:String>
+    <system:String x:Key="item_about">About</system:String>
+    <system:String x:Key="item_activation">Active Product</system:String>
+    <system:String x:Key="item_language">Change Language</system:String>
+    <system:String x:Key="item_go_to">Go To...</system:String>
+    <system:String x:Key="item_find">Find</system:String>
+    <system:String x:Key="item_replace">Replace</system:String>
+     
+    <!--Tags-->
+    <system:String x:Key="tag_title">Title :</system:String>
+    <system:String x:Key="tag_artist">Artist :</system:String>
+    <system:String x:Key="tag_album">Album :</system:String>
+    <system:String x:Key="tag_track">Track :</system:String>
+    <system:String x:Key="tag_year">Year :</system:String>
+     
+    <!--Messages Type-->
+    <system:String x:Key="msg_type_confirm">Confirm</system:String>
+    <system:String x:Key="msg_type_error">Error</system:String>
+    <system:String x:Key="msg_type_info">Info</system:String>
+    <system:String x:Key="msg_type_update">Update</system:String>
+    
+    <!--Messages-->
+    <system:String x:Key="msg_remove_readonly">This file has write protection enabled, do you want to remove it ?</system:String>
+    <system:String x:Key="msg_delete_present_lyrics">Delete the already present lyrics ?</system:String>
+    <system:String x:Key="msg_remove_empty_lines">Do you want to delete empty lines ?</system:String>
+    <system:String x:Key="msg_file_success_saved">The file has been successfully saved.</system:String>
+    <system:String x:Key="msg_file_failed_saved">An error occurred while saving the file.</system:String>
+    <system:String x:Key="msg_file_success_exported">The file was successfully exported.</system:String>
+    <system:String x:Key="msg_file_not_exported">An error occurred while exporting the file.</system:String>
+    <system:String x:Key="msg_temp_file_error">Temporary file was not created.</system:String>
+    <system:String x:Key="msg_readonly_file_error">This file is write-protected and can not be used.</system:String>
+    <system:String x:Key="msg_readonly_remove_error">Write protection has not been removed.</system:String>
+    <system:String x:Key="msg_player_plugin_error">The plugin (WASAPI) is not available on your version of Windows.</system:String>
+    <system:String x:Key="msg_player_inizializing_error">There was an error while setting up the music player.</system:String>
+    <system:String x:Key="msg_player_output_error">There was an error while setting up the music player.</system:String>
+    <system:String x:Key="msg_player_file_error">There was an error loading the audio file.</system:String>
+    <system:String x:Key="msg_lyrics_reading_error">There was an error reading the lyrics in the file.</system:String>
+    <system:String x:Key="msg_language_change">The language will be changed when the app is restarted.</system:String>
+</ResourceDictionary>

@@ -1,0 +1,179 @@
+﻿<Window x:Class="Lyrics_3_Tag_Editor.Pages.GoToPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="{DynamicResource item_go_to}" Height="525.5" Width="812.5" ResizeMode="NoResize">
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#FF2C2C2C" />
+        <SolidColorBrush x:Key="PrimaryFont" Color="#FFECECEC" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FFF0F0F0" Effect="{DynamicResource z-depth1}">
+            <Grid HorizontalAlignment="Left" Height="35" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="37"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center"  Foreground="#FF575757" Text="{DynamicResource item_go_to}" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontWeight="Bold" Grid.Column="2" FontSize="16" Margin="0,9,-1,6" />
+                <Path Width="16" Height="16" Fill="#FF575757" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Data="M15.5,14L14.71,14 14.43,13.73C15.41,12.59 16,11.11 16,9.5 16,5.91 13.09,3 9.5,3 5.91,3 3,5.91 3,9.5 3,13.09 5.91,16 9.5,16 11.11,16 12.59,15.41 13.73,14.43L14,14.71 14,15.5 19,20.49 20.49,19 15.5,14z M9.5,14C7.01,14 5,11.99 5,9.5 5,7.01 7.01,5 9.5,5 11.99,5 14,7.01 14,9.5 14,11.99 11.99,14 9.5,14z" />
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Vai a..." HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <TextBox x:Name="tb_find" Grid.Row="2" Text="" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" KeyDown="tb_find_KeyDown"></TextBox>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1">
+                <DataGrid x:Name="dg_lyrics" Grid.Row="0" RowHeight="30" AutoGenerateColumns="False" CanUserResizeRows="False" ColumnWidth="*" BorderBrush="#FF2C2C2C" SelectionMode="Single" AlternatingRowBackground="#FFF3F3F3" HeadersVisibility="None" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" Background="#FFECECEC" EnableRowVirtualization="False" CanUserSortColumns="False" CanUserReorderColumns="False" IsSynchronizedWithCurrentItem="True" FontWeight="Bold" CanUserResizeColumns="False">
+                    <DataGrid.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE59400" />
+                        <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#90E59400"/>
+                    </DataGrid.Resources>
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+                            <Setter Property="Foreground" Value="#FFC1C1C1" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontFamily" Value="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" />
+                            <Setter Property="FontSize" Value="15" />
+                            <Setter Property="Height" Value="50" />
+                            <Setter Property="Padding" Value="10,0,0,0" />
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn x:Name="col_status" Width="60">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" Width="40" >
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsEnabled" Value="True">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Opacity" Value="0.3" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <Path Stretch="Uniform" Width="16" Height="16" Fill="#FFC1C1C1" Data="M24,0C10.745,0 0,10.745 0,24 0,37.255 10.745,48 24,48 37.255,48 48,37.255 48,24 48,10.745 37.255,0 24,0z M4,24C4,12.954 12.954,4 24,4 28.85,4 33.293,5.727 36.755,8.597L8.597,36.755C5.727,33.293,4,28.85,4,24z M24,44C19.244,44,14.881,42.333,11.448,39.561L39.56,11.45C42.333,14.881 44,19.244 44,24 44,35.046 35.046,44 24,44z" />
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Width="10" Height="10" CornerRadius="100" Background="{Binding status}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="150">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsEnabled" Value="True">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Opacity" Value="0.3" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock Margin="4" Text="{DynamicResource time}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="14" FontWeight="Normal" />
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox x:Name="dg_time" Text="{Binding time}" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" Padding="5,0,0,0" MaxLines="1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" Background="{x:Null}" FontWeight="Bold" Style="{DynamicResource LyricsTextBox}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="510">
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsEnabled" Value="True">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Opacity" Value="0.3" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock Margin="4" Text="{DynamicResource lyrics}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="14" FontWeight="Normal" />
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox x:Name="dg_lyrics" Text="{Binding lyrics}" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" Padding="5,0,0,0" MaxLines="1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" Background="{x:Null}" FontWeight="Normal" Style="{DynamicResource LyricsTextBox}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" Width="40" >
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsEnabled" Value="True">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Opacity" Value="0.3" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <Path Stretch="Uniform" Width="16" Height="16" Fill="#FFC1C1C1" Data="M24,0C10.745,0 0,10.745 0,24 0,37.255 10.745,48 24,48 37.255,48 48,37.255 48,24 48,10.745 37.255,0 24,0z M4,24C4,12.954 12.954,4 24,4 28.85,4 33.293,5.727 36.755,8.597L8.597,36.755C5.727,33.293,4,28.85,4,24z M24,44C19.244,44,14.881,42.333,11.448,39.561L39.56,11.45C42.333,14.881 44,19.244 44,24 44,35.046 35.046,44 24,44z" />
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.HeaderTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="btn_redirect" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Click="btn_redirect_Click">
+                                        <Path Stretch="Uniform" Width="15" Height="15" VerticalAlignment="Center" HorizontalAlignment="Center" Data="M18,19L6,19C5.45,19,5,18.55,5,18L5,6C5,5.45,5.45,5,6,5L11,5C11.55,5,12,4.55,12,4L12,4C12,3.45,11.55,3,11,3L5,3C3.89,3,3,3.9,3,5L3,19C3,20.1,3.9,21,5,21L19,21C20.1,21,21,20.1,21,19L21,13C21,12.45,20.55,12,20,12L20,12C19.45,12,19,12.45,19,13L19,18C19,18.55,18.55,19,18,19z M14,4L14,4C14,4.55,14.45,5,15,5L17.59,5 8.46,14.13C8.07,14.52,8.07,15.15,8.46,15.54L8.46,15.54C8.85,15.93,9.48,15.93,9.87,15.54L19,6.41 19,9C19,9.55,19.45,10,20,10L20,10C20.55,10,21,9.55,21,9L21,4C21,3.45,20.55,3,20,3L15,3C14.45,3,14,3.45,14,4z" Fill="#FF575757" />
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

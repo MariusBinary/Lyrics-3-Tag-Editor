@@ -1,0 +1,98 @@
+﻿ <ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--App-->
+    <system:String x:Key="app_title">Lyrics 3 Tag Editor</system:String>
+    <system:String x:Key="app_description">Lyrics 3 Tag Editor è un software che ti permette di leggere, scrivere e visualizzare il Lyrics3v2 tag. Contiene inoltre molte funzioni per facilitarne l'uso: Aggiungere, Rimuovere, Svuotare, Ordinare, Syncronizza, ecc ...</system:String>
+    <system:String x:Key="app_author">MariusBinary</system:String>
+     
+    <!--Labels-->
+    <system:String x:Key="add">Aggiungi</system:String>
+    <system:String x:Key="remove">Rimuovi</system:String>
+    <system:String x:Key="clear">Svuota</system:String>
+    <system:String x:Key="sort">Ordina</system:String>
+    <system:String x:Key="remove_all">Rimuovi Tutto</system:String>
+
+    <system:String x:Key="status">Stato</system:String>
+    <system:String x:Key="time">Tempo</system:String>
+    <system:String x:Key="lyrics">Testo</system:String>
+
+    <system:String x:Key="slideshow">Presentazione</system:String>
+    <system:String x:Key="tags">Tag</system:String>
+     
+    <system:String x:Key="file">File</system:String>
+    <system:String x:Key="saving">Salvataggio</system:String>
+    <system:String x:Key="layout">Aspetto</system:String>
+    <system:String x:Key="drag_and_drop">Trascina e Rilascia</system:String>
+    <system:String x:Key="import">Importa</system:String>
+    <system:String x:Key="export">Esporta</system:String>
+
+    <!--Settings-->
+    <system:String x:Key="set_allow_original_file">Salva una copia del file originale (se non contiene alcun tag).</system:String>
+    <system:String x:Key="set_allow_auto_sort">Ordina automaticamente i testi prima del salvataggio.</system:String>
+    <system:String x:Key="set_allow_empty_rows">Salva le righe di testo vuote (se hanno il tempo).</system:String>
+    <system:String x:Key="set_allow_row_status">Mostra lo stato delle righe.</system:String>
+    <system:String x:Key="set_allow_import_blank_lines">Rimuovi le righe vuote (se sono presenti).</system:String>
+    <system:String x:Key="set_allow_import_time">Importa anche il tempo (se disponibile).</system:String>
+    <system:String x:Key="set_allow_export_time">Esporta il testo preceduto dal tempo.</system:String>
+    <system:String x:Key="set_allow_files_drag_and_drop">Permetti ai file di essere aperti se trascinati e rilasciati sul programma.</system:String>
+     
+    <!--Menu-->
+    <system:String x:Key="menu_file">File</system:String>
+    <system:String x:Key="menu_lyrics">Testi</system:String>
+    <system:String x:Key="menu_info">Informazioni</system:String>
+    <system:String x:Key="menu_edit">Modifica</system:String>
+    <system:String x:Key="menu_general">Generale</system:String>
+    <system:String x:Key="menu_aspect">Aspetto</system:String>
+    <system:String x:Key="menu_player">Riproduzione</system:String>
+    <system:String x:Key="menu_slideshow">Presentazione</system:String>
+     
+    <!--Items-->
+    <system:String x:Key="item_open">Apri</system:String>
+    <system:String x:Key="item_recent">Recenti</system:String>
+    <system:String x:Key="item_save">Salva</system:String>
+    <system:String x:Key="item_save_as">Salva come</system:String>
+    <system:String x:Key="item_settings">Impostazioni</system:String>
+    <system:String x:Key="item_exit">Esci</system:String>
+    <system:String x:Key="item_import">Importa</system:String>
+    <system:String x:Key="item_export">Esporta</system:String>
+    <system:String x:Key="item_refresh">Aggiorna</system:String>
+    <system:String x:Key="item_about">Informazioni su...</system:String>
+    <system:String x:Key="item_language">Cambia Lingua</system:String>
+    <system:String x:Key="item_go_to">Vai a...</system:String>
+    <system:String x:Key="item_find">Trova</system:String>
+    <system:String x:Key="item_replace">Sostituisci</system:String>
+     
+    <!--Tags-->
+    <system:String x:Key="tag_title">Titolo :</system:String>
+    <system:String x:Key="tag_artist">Artista :</system:String>
+    <system:String x:Key="tag_album">Album :</system:String>
+    <system:String x:Key="tag_track">Brano:</system:String>
+    <system:String x:Key="tag_year">Anno :</system:String>
+     
+    <!--Messages Type-->
+    <system:String x:Key="msg_type_confirm">Conferma</system:String>
+    <system:String x:Key="msg_type_error">Errore</system:String>
+    <system:String x:Key="msg_type_info">Informazione</system:String>
+    <system:String x:Key="msg_type_update">Aggiornamento</system:String>
+     
+    <!--Messages-->
+    <system:String x:Key="msg_remove_readonly">Questo file ha attiva la protezione da scrittura, si desidera rimuoverla ?</system:String>
+    <system:String x:Key="msg_delete_present_lyrics">Cancellare i testi già presenti ?</system:String>
+    <system:String x:Key="msg_remove_empty_lines">Rimuovere le righe vuote ?</system:String>
+    <system:String x:Key="msg_file_success_saved">Il file è stato salvato con successo.</system:String>
+    <system:String x:Key="msg_file_failed_saved">Si è verificato un errore durante il salvataggio del file, si prega di riprovare nuovamente.</system:String>
+    <system:String x:Key="msg_file_success_exported">Il file è stato esportato con successo.</system:String>
+    <system:String x:Key="msg_file_not_exported">Si è verificato un errore durante l'esportazione del file.</system:String>
+    <system:String x:Key="msg_temp_file_error">Si è verificato un errore durante la creazione del file temporaneo.</system:String>
+    <system:String x:Key="msg_readonly_file_error">Questo file non può essere utilizzato se ha attiva la protezione da scrittura.</system:String>
+    <system:String x:Key="msg_readonly_remove_error">Si è verificato un errore durante la rimozione della protezione da scrittura.</system:String>
+    <system:String x:Key="msg_player_plugin_error">Il plugin (WASAPI) non è disponibile sulla versione del tuo sistema operativo.</system:String>
+    <system:String x:Key="msg_player_inizializing_error">Si è verificato un errore durante la configurazione del lettore musicale.</system:String>
+    <system:String x:Key="msg_player_output_error">Si è verificato un errore durante la configurazione del lettore musicale.</system:String>
+    <system:String x:Key="msg_player_file_error">Si è verificato un errore durante il caricamento del file audio.</system:String>
+    <system:String x:Key="msg_lyrics_reading_error">Si è verificato un errore durante la lettura dei tag dal file audio.</system:String>
+    <system:String x:Key="msg_language_change">Il linguaggio verrò cambiato al prossimo riavvio dell'app.</system:String>
+</ResourceDictionary>

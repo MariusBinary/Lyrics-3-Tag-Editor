@@ -1,0 +1,76 @@
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <!--App-->
+    <system:String x:Key="app_title">Lyrics 3 Tag Editor</system:String>
+    <system:String x:Key="app_description">Lyrics 3 Tag Editor это программа позволяет читать, записывать и просматривать тег Lyrics3v2. Он содержит множество функций, чтобы сделать его проще в использовании: Добавить, Удалить, Очистить, Сортировка, Синхронизация, и т. д ..</system:String>
+    <system:String x:Key="app_author">MariusBinary</system:String>
+
+    <!--Labels-->
+    <system:String x:Key="add">Добавить</system:String>
+    <system:String x:Key="remove">Удалить</system:String>
+    <system:String x:Key="clear">Очистить</system:String>
+    <system:String x:Key="sort">Сортировать</system:String>
+    <system:String x:Key="remove_all">Удалить Все</system:String>
+    <system:String x:Key="time">Время</system:String>
+    <system:String x:Key="lyrics">Текст</system:String>
+    <system:String x:Key="row">Строк</system:String>
+    <system:String x:Key="rows">Строки</system:String>
+    <system:String x:Key="settings">Параметры</system:String>
+    <system:String x:Key="file">Файл</system:String>
+    <system:String x:Key="layout">Расположение</system:String>
+    <system:String x:Key="chars">Символы</system:String>
+    <system:String x:Key="correct">Правильно</system:String>
+    <system:String x:Key="incorrect">Неправильные</system:String>
+
+    <!--Settings-->
+    <system:String x:Key="set_allow_original_file">Сохраните копию оригинального файла (если у него нет текста).</system:String>
+    <system:String x:Key="set_allow_auto_sort">Автоматически сортировать текст перед сохранением.</system:String>
+    <system:String x:Key="set_allow_empty_rows">Сохраните пустую Строку (если Строк не пустой).</system:String>
+    
+    <!--Menu-->
+    <system:String x:Key="menu_file">Файл</system:String>
+    <system:String x:Key="menu_lyrics">Текст</system:String>
+    <system:String x:Key="menu_info">Информация</system:String>
+    <system:String x:Key="item_open">Открыть</system:String>
+    <system:String x:Key="item_save">Сохранить</system:String>
+    <system:String x:Key="item_save_as">Сохранить как...</system:String>
+    <system:String x:Key="item_settings">Параметры</system:String>
+    <system:String x:Key="item_exit">Выход</system:String>
+    <system:String x:Key="item_import">Импорт</system:String>
+    <system:String x:Key="item_export">Экспорт</system:String>
+    <system:String x:Key="item_refresh">Обновить</system:String>
+    <system:String x:Key="item_raw">Необработанный</system:String>
+    <system:String x:Key="item_find_updates">Проверить на Обновления</system:String>
+    <system:String x:Key="item_about">Информация</system:String>
+    <system:String x:Key="item_language">Изменить Язык</system:String>
+    
+    <!--Messages Type-->
+    <system:String x:Key="msg_type_confirm">Подтвердить</system:String>
+    <system:String x:Key="msg_type_error">Ошибка</system:String>
+    <system:String x:Key="msg_type_info">Информация</system:String>
+    <system:String x:Key="msg_type_update">Обновление</system:String>
+    
+    <!--Messages-->
+    <system:String x:Key="msg_remove_readonly">Этот файл имеет активную защиту от записи, Вы хотите снять защиту от записи?</system:String>
+    <system:String x:Key="msg_delete_present_lyrics">Удалить уже имеющиеся тексты ?</system:String>
+    <system:String x:Key="msg_remove_empty_lines">Do you want to delete empty lines ?</system:String>
+    <system:String x:Key="msg_file_success_saved">Файл был успешно Сохранен! ;-)</system:String>
+    <system:String x:Key="msg_file_success_exported">Файл был успешно Экспортирован!</system:String>
+    <system:String x:Key="msg_file_not_exported">ОШИБКА при экспорте файла!</system:String>
+    <system:String x:Key="msg_temp_file_error">Временный файл не был создан!</system:String>
+    <system:String x:Key="msg_readonly_file_error">Этот файл защищен от записи и не может быть использован!</system:String>
+    <system:String x:Key="msg_readonly_remove_error">Защита от записи не удалена!</system:String>
+    <system:String x:Key="msg_player_plugin_error">Плагин (WASAPI) недоступен в вашей версии Windows!</system:String>
+    <system:String x:Key="msg_player_inizializing_error">При настройке  проигрывателя возникла ошибка!</system:String>
+    <system:String x:Key="msg_player_output_error">При настройке  проигрывателя возникла ошибка!</system:String>
+    <system:String x:Key="msg_player_file_error">Ошибка загрузки аудиофайла!</system:String>
+    <system:String x:Key="msg_lyrics_reading_error">Произошла ошибка при чтении текста в файле!</system:String>
+    <system:String x:Key="msg_language_change">Язык будет изменен при перезапуске приложения!</system:String>
+    <system:String x:Key="msg_update_not_avaible">Установлена Последняя версия!</system:String>
+
+    <!--Parts-->
+    <system:String x:Key="part_update_is_avaible">доступна для загрузки</system:String>
+</ResourceDictionary>

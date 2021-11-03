@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Storyboard x:Key="DropAnimation" RepeatBehavior="Forever">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="border">
+            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-4.000"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-6.000"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-4.000"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="4.000"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="6.000"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.4" Value="4.000"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+</ResourceDictionary>

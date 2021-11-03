@@ -1,0 +1,620 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        x:Class="Lyrics_3_Tag_Editor.Pages.MainWindow"
+        mc:Ignorable="d"
+        Title="Lyrics 3 Tag Editor" Icon="/icon.ico" 
+        Height="700" Width="1200" MinWidth="1200" MinHeight="700"
+        Closing="Window_Closing" KeyDown="Window_KeyDown" SizeChanged="Window_SizeChanged" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="#FF2C2C2C" />
+        <SolidColorBrush x:Key="PrimaryFont" Color="#FFECECEC" />
+    </Window.Resources>
+    <Grid DragEnter="Grid_DragEnter" AllowDrop="True">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="120" />
+            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0">
+                <Grid Background="#FF292929" Height="35" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Left" Height="35" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="37"/>
+                            <ColumnDefinition Width="90"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center"  Foreground="#FFE59400" Text="Lyrics Editor" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="14" FontWeight="Bold" Grid.Column="1" />
+                        <Path Width="12" Height="16" Fill="#FFE59400" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Data="M17,2H9C7.346,2,6,3.346,6,5v14c0,0.514,0.104,0.946,0.308,1.285c0.564,0.935,1.815,1.008,2.813,0.008l3.172-3.172   c0.375-0.374,1.039-0.374,1.414,0l3.172,3.172c0.491,0.491,1.002,0.74,1.52,0.74C19.196,21.033,20,20.404,20,19V5   C20,3.346,18.654,2,17,2z M9,4h8c0.551,0,1,0.449,1,1v9.905l-2.451-2.247c-1.406-1.289-3.693-1.288-5.099,0L8,14.905V5   C8,4.449,8.449,4,9,4z M15.121,15.707c-0.565-0.565-1.318-0.876-2.121-0.876s-1.556,0.312-2.121,0.876L8,18.586v-2.324l3.126-2.866   c1.033-0.947,2.714-0.947,3.747,0L18,16.262v2.324L15.121,15.707z" />
+                    </Grid>
+                    <Menu Height="35" Background="#FF292929" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" Grid.Column="1">
+                        <MenuItem Header="{DynamicResource menu_file}">
+                            <MenuItem Header="{DynamicResource item_open}" Click="item_open_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M430.1,192H81.9c-17.7,0-18.6,9.2-17.6,20.5l13,183c0.9,11.2,3.5,20.5,21.1,20.5h316.2c18,0,20.1-9.2,21.1-20.5l12.1-185.3   C448.7,199,447.8,192,430.1,192z M426.2,143.3c-0.5-12.4-4.5-15.3-15.1-15.3c0,0-121.4,0-143.2,0c-21.8,0-24.4,0.3-40.9-17.4C213.3,95.8,218.7,96,190.4,96    c-22.6,0-75.3,0-75.3,0c-17.4,0-23.6-1.5-25.2,16.6c-1.5,16.7-5,57.2-5.5,63.4h343.4L426.2,143.3z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="item_recent" Header="{DynamicResource item_recent}">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M52,46.343L52,24C52,21.791 50.209,20 48,20 45.791,20 44,21.791 44,24L44,48C44,48.009 44.003,48.018 44.003,48.027 44.004,48.28 44.029,48.533 44.079,48.782 44.103,48.905 44.148,49.016 44.183,49.136 44.222,49.268 44.252,49.402 44.305,49.531 44.363,49.669 44.441,49.795 44.513,49.925 44.567,50.025 44.61,50.125 44.673,50.22 44.82,50.441 44.987,50.648 45.174,50.833L56.485,62.145C58.047,63.707 60.582,63.707 62.143,62.145 63.705,60.583 63.705,58.048 62.143,56.489L52,46.343z M48,4C23.7,4 4,23.7 4,48 4,72.301 23.7,92 48,92 72.301,92 92,72.301 92,48 92,23.7 72.301,4 48,4z M48,84C28.118,84 12,67.882 12,48 12,28.118 28.118,12 48,12 67.882,12 84,28.118 84,48 84,67.882 67.882,84 48,84z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="item_save" Header="{DynamicResource item_save}" Click="item_save_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M22,4h-2v6c0,0.552-0.448,1-1,1h-9c-0.552,0-1-0.448-1-1V4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18  c1.105,0,2-0.895,2-2V8L22,4z M22,24H8v-6c0-1.105,0.895-2,2-2h10c1.105,0,2,0.895,2,2V24z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="item_save_as" Header="{DynamicResource item_save_as}" Click="item_save_as_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M22,4h-2v6c0,0.552-0.448,1-1,1h-9c-0.552,0-1-0.448-1-1V4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18  c1.105,0,2-0.895,2-2V8L22,4z M22,24H8v-6c0-1.105,0.895-2,2-2h10c1.105,0,2,0.895,2,2V24z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="{DynamicResource item_settings}" Click="item_settings_Click" Foreground="#FFDAA902">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M38.86,25.95C38.94,25.31 39,24.66 39,24 39,23.34 38.94,22.69 38.86,22.05L43.09,18.74C43.47,18.44,43.58,17.9,43.33,17.46L39.33,10.53C39.08,10.1,38.56,9.92,38.11,10.1L33.13,12.11C32.1,11.32,30.97,10.65,29.75,10.14L29,4.84C28.91,4.37,28.5,4,28,4L20,4C19.5,4,19.09,4.37,19.01,4.84L18.26,10.14C17.04,10.65,15.91,11.31,14.88,12.11L9.90000000000001,10.1C9.45000000000001,9.93,8.93000000000001,10.1,8.68000000000001,10.53L4.68000000000001,17.46C4.43000000000001,17.89,4.54000000000001,18.43,4.92000000000001,18.74L9.14000000000001,22.05C9.06000000000001,22.69 9.00000000000001,23.34 9.00000000000001,24 9.00000000000001,24.66 9.06000000000001,25.31 9.14000000000001,25.95L4.92000000000001,29.26C4.54000000000001,29.56,4.43000000000001,30.1,4.68000000000001,30.54L8.68000000000001,37.47C8.93000000000001,37.9,9.45000000000001,38.08,9.90000000000001,37.9L14.88,35.89C15.91,36.68,17.04,37.35,18.26,37.86L19.01,43.16C19.09,43.63,19.5,44,20,44L28,44C28.5,44,28.91,43.63,28.99,43.16L29.74,37.86C30.96,37.35,32.09,36.69,33.12,35.89L38.1,37.9C38.55,38.07,39.07,37.9,39.32,37.47L43.32,30.54C43.57,30.11,43.46,29.57,43.08,29.26L38.86,25.95z M24,31C20.13,31 17,27.87 17,24 17,20.13 20.13,17 24,17 27.87,17 31,20.13 31,24 31,27.87 27.87,31 24,31z" Fill="#FFDAA902" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="{DynamicResource item_exit}" Click="item_exit_Click" Foreground="#FFFF6B6B">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M20.17 31.17l2.83 2.83 10-10-10-10-2.83 2.83 5.17 5.17h-19.34v4h19.34l-5.17 5.17zm17.83-25.17h-28c-2.21 0-4 1.79-4 4v8h4v-8h28v28h-28v-8h-4v8c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4v-28c0-2.21-1.79-4-4-4z" Fill="#FFFF6B6B" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="{DynamicResource menu_edit}">
+                            <MenuItem x:Name="item_go_to" Header="{DynamicResource item_go_to}" Click="item_go_to_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M15,5h6c0.55,0,1,0.45,1,1v0c0,0.55-0.45,1-1,1h-6c-0.55,0-1-0.45-1-1v0C14,5.45,14.45,5,15,5z M15,10.5h6 c0.55,0,1,0.45,1,1v0c0,0.55-0.45,1-1,1h-6c-0.55,0-1-0.45-1-1v0C14,10.95,14.45,10.5,15,10.5z M15,16h6c0.55,0,1,0.45,1,1v0 c0,0.55-0.45,1-1,1h-6c-0.55,0-1-0.45-1-1v0C14,16.45,14.45,16,15,16z M9.85,19.15l1.79-1.79c0.2-0.2,0.2-0.51,0-0.71l-1.79-1.79 C9.54,14.54,9,14.76,9,15.21v3.59C9,19.24,9.54,19.46,9.85,19.15z M9,16H8.7c-2.35,0-4.45-1.71-4.68-4.05C3.76,9.27,5.87,7,8.5,7 H11c0.55,0,1-0.45,1-1v0c0-0.55-0.45-1-1-1H8.5c-3.86,0-6.96,3.4-6.44,7.36C2.48,15.64,5.43,18,8.73,18H9" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="item_find" Header="{DynamicResource item_find}" Click="item_find_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M15.5,14h-0.79l-0.28-0.27C15.41,12.59,16,11.11,16,9.5C16,5.91,13.09,3,9.5,3S3,5.91,3,9.5 S5.91,16,9.5,16c1.61,0,3.09-0.59,4.23-1.57L14,14.71v0.79l5,4.99L20.49,19L15.5,14z M9.5,14C7.01,14,5,11.99,5,9.5S7.01,5,9.5,5 S14,7.01,14,9.5S11.99,14,9.5,14z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="item_replace" Header="{DynamicResource item_replace}" Click="item_replace_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M11,6c1.38,0,2.63,0.56,3.54,1.46l-1.69,1.69C12.54,9.46,12.76,10,13.21,10h4.29c0.28,0,0.5-0.22,0.5-0.5V5.21 c0-0.45-0.54-0.67-0.85-0.35l-1.2,1.2C14.68,4.78,12.93,4,11,4C7.96,4,5.38,5.94,4.42,8.64C4.18,9.3,4.65,10,5.35,10h0 c0.42,0,0.79-0.26,0.93-0.66C6.96,7.4,8.82,6,11,6z M16.64,15.14c0.4-0.54,0.72-1.15,0.95-1.8c0.23-0.65-0.25-1.34-0.94-1.34h0 c-0.42,0-0.79,0.26-0.93,0.66C15.04,14.6,13.18,16,11,16c-1.38,0-2.63-0.56-3.54-1.46l1.69-1.69C9.46,12.54,9.24,12,8.79,12H4.5 C4.22,12,4,12.22,4,12.5v4.29c0,0.45,0.54,0.67,0.85,0.35l1.2-1.2C7.32,17.22,9.07,18,11,18c1.55,0,2.98-0.51,4.14-1.36l4.11,4.11 c0.41,0.41,1.08,0.41,1.49,0l0,0c0.41-0.41,0.41-1.08,0-1.49L16.64,15.14z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="{DynamicResource menu_lyrics}">
+                            <MenuItem x:Name="item_import" Header="{DynamicResource item_import}" Click="item_import_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M16.707,7.404C16.518,7.216,16.259,7.121,16,7.121s-0.518,0.095-0.707,0.283L13,9.697V3c0-0.552-0.448-1-1-1s-1,0.448-1,1   v6.697L8.707,7.404C8.518,7.216,8.267,7.111,8,7.111S7.482,7.216,7.293,7.404c-0.39,0.39-0.39,1.024,0,1.414L12,13.5l4.709-4.684 C17.097,8.429,17.097,7.794,16.707,7.404z M20.987,16c0-0.105-0.004-0.211-0.039-0.316l-2-6C18.812,9.275,18.431,9,18,9h-0.219c-0.094,0.188-0.21,0.368-0.367,0.525   L15.932,11h1.348l1.667,5H5.054l1.667-5h1.348L6.586,9.525C6.429,9.368,6.312,9.188,6.219,9H6C5.569,9,5.188,9.275,5.052,9.684   l-2,6C3.017,15.789,3.013,15.895,3.013,16C3,16,3,21,3,21c0,0.553,0.447,1,1,1h16c0.553,0,1-0.447,1-1C21,21,21,16,20.987,16z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="item_export" Header="{DynamicResource item_export}" Click="item_export_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M20.987,16c0-0.105-0.004-0.211-0.039-0.316l-2-6C18.812,9.275,18.431,9,18,9h-4v2h3.279l1.667,5H5.054l1.667-5H10V9H6   C5.569,9,5.188,9.275,5.052,9.684l-2,6C3.017,15.789,3.013,15.895,3.013,16C3,16,3,21,3,21c0,0.553,0.447,1,1,1h16 c0.553,0,1-0.447,1-1C21,21,21,16,20.987,16z M16,7.904c0.259,0,0.518-0.095,0.707-0.283c0.39-0.39,0.39-1.024,0-1.414L12,1.5L7.293,6.207   c-0.39,0.39-0.39,1.024,0,1.414C7.482,7.81,7.741,7.904,8,7.904S8.518,7.81,8.707,7.621L11,5.328V12c0,0.552,0.448,1,1,1   s1-0.448,1-1V5.328l2.293,2.293C15.482,7.81,15.741,7.904,16,7.904z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <Separator Background="#FF232323" IsEnabled="True">
+                                <Separator.Style>
+                                    <Style TargetType="Separator">
+                                        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
+                                        <Setter Property="Margin" Value="0,0,0,0"/>
+                                        <Setter Property="Focusable" Value="false"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type Separator}">
+                                                    <Grid Background="#FF2C2C2C">
+                                                        <Border CornerRadius="1"
+                                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                                    Background="{TemplateBinding Background}" 
+                                                    Height="2" 
+                                                    SnapsToDevicePixels="true"
+                                                        Margin="5,3,5,3"/>
+                                                    </Grid>
+                                                </ControlTemplate>
+
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Separator.Style>
+                            </Separator>
+                            <MenuItem x:Name="item_refresh" Header="{DynamicResource item_refresh}" Click="item_refresh_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="{DynamicResource menu_info}">
+                            <MenuItem Header="{DynamicResource item_language}">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                                <MenuItem x:Name="item_lang_en" Header="English" Click="item_lang_en_Click">
+                                    <MenuItem.Icon>
+                                        <Image Width="18" Height="18" Stretch="Uniform" Source="/Culture/Flags/british-flag-small.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="item_lang_it" Header="Italian" Click="item_lang_it_Click">
+                                    <MenuItem.Icon>
+                                        <Image Width="18" Height="18" Stretch="Uniform" Source="/Culture/Flags/italian-flag-small.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="item_lang_ru" Header="Russian" Click="item_lang_ru_Click">
+                                    <MenuItem.Icon>
+                                        <Image Width="18" Height="18" Stretch="Uniform" Source="/Culture/Flags/russian-flag-small.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="item_lang_ro" Header="Romanian" Click="item_lang_ro_Click">
+                                    <MenuItem.Icon>
+                                        <Image Width="18" Height="18" Stretch="Uniform" Source="/Culture/Flags/romanian-flag-small.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </MenuItem>
+                            <MenuItem Header="{DynamicResource item_about}" Click="item_about_software_Click">
+                                <MenuItem.Icon>
+                                    <Path Width="18" Height="18" Stretch="Uniform" Data="M177.317,104.632c0,40.158,32.525,72.685,72.683,72.685  c40.158,0,72.685-32.527,72.685-72.685c0-40.158-32.526-72.683-72.685-72.683C209.842,31.949,177.317,64.474,177.317,104.632z   M177.317,259.086v163.538h-22.715c-12.536,0-22.713,10.175-22.713,22.716c0,12.536,10.177,22.711,22.713,22.711h190.794  c12.537,0,22.717-10.175,22.717-22.711c0-12.541-10.18-22.716-22.717-22.716h-22.711V233.648c0-11.083-8.91-19.991-19.991-19.991  H154.602c-12.536,0-22.713,10.177-22.713,22.713c0,12.538,10.177,22.715,22.713,22.715H177.317z" Fill="#FFECECEC" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                    </Menu>
+                </Grid>
+            </Grid>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="10" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="tab_content" Grid.Column="1" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid x:Name="tab_display" Grid.Column="0" MinWidth="565">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="200" />
+                        </Grid.RowDefinitions>
+                        <Border BorderThickness="1" Grid.Row="0" BorderBrush="#FF2C2C2C" Background="#FFECECEC" Grid.Column="0" MinWidth="565" CornerRadius="3">
+                            <Grid>
+                                <Grid Background="#FF2C2C2C" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="50">
+                                    <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsEnabled" Value="True">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Opacity" Value="0.3" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock Margin="4" Text="{DynamicResource slideshow}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="14" />
+                                    </Border>
+                                    <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                        <Grid Margin="5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton x:Name="rad_lyrics_1x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="40" BorderBrush="{x:Null}" Click="rad_lyrics_1x_Click" Grid.Column="0" Content="1x" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontWeight="Bold" />
+                                            <RadioButton x:Name="rad_lyrics_2x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="40" BorderBrush="{x:Null}" Click="rad_lyrics_2x_Click" Grid.Column="2" Content="3x" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontWeight="Bold" />
+                                            <RadioButton x:Name="rad_lyrics_4x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="40" BorderBrush="{x:Null}" Click="rad_lyrics_4x_Click" Grid.Column="4" Content="6x" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontWeight="Bold" />
+                                            <RadioButton x:Name="rad_lyrics_8x" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="40" BorderBrush="{x:Null}" Click="rad_lyrics_8x_Click" Grid.Column="6" Content="9x" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontWeight="Bold" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                                <DockPanel x:Name="slideshow_content" Margin="0,50,0,0"></DockPanel>
+                            </Grid>
+                        </Border>
+                        <Border BorderThickness="1" Grid.Row="2" BorderBrush="#FF2C2C2C" Background="#FFECECEC" Grid.Column="0" MinWidth="565" CornerRadius="3">
+                            <Grid >
+                                <Grid Background="#FF2C2C2C" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="50">
+                                    <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsEnabled" Value="True">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Opacity" Value="0.3" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock Margin="4" Text="{DynamicResource tags}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="14" />
+                                    </Border>
+                                    <Border CornerRadius="3" Background="#FF1FFF99" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="438,12,0,12">
+                                        <Border.Style>
+                                            <Style TargetType="{x:Type Border}">
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsEnabled" Value="True">
+                                                        <Setter Property="Opacity" Value="1" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Opacity" Value="0.3" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                    </Border>
+                                </Grid>
+                                <Grid Margin="0,50,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" BorderThickness="1" CornerRadius="3" BorderBrush="#FF2C2C2C" Width="120" Height="120" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Background="#FFC3C3C3">
+                                        <Image x:Name="img_tag_art" Source="/Images/default_album_art.png"></Image>
+                                    </Border>
+                                    <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" IsEnabled="False">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="20" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="10" />
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="10" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{DynamicResource tag_title}"></TextBlock>
+                                            <TextBox x:Name="tb_tag_title" Grid.Column="1" Height="30" Width="180"></TextBox>
+                                        </Grid>
+                                        <Grid Grid.Row="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{DynamicResource tag_artist}"></TextBlock>
+                                            <TextBox x:Name="tb_tag_artist" Grid.Column="1" Height="30" Width="180"></TextBox>
+                                        </Grid>
+                                        <Grid Grid.Row="4">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{DynamicResource tag_album}"></TextBlock>
+                                            <TextBox x:Name="tb_tag_album" Grid.Column="1" Height="30" Width="180"></TextBox>
+                                        </Grid>
+
+                                        <Grid Grid.Row="0" Grid.Column="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{DynamicResource tag_track}"></TextBlock>
+                                            <TextBox x:Name="tb_tag_track" Grid.Column="1" Height="30" Width="75"></TextBox>
+                                        </Grid>
+                                        <Grid Grid.Row="2" Grid.Column="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60"/>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{DynamicResource tag_year}"></TextBlock>
+                                            <TextBox x:Name="tb_tag_year" Grid.Column="1" Height="30" Width="75"></TextBox>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Border x:Name="tab_table" CornerRadius="3" Background="#FF3C3C3C" Grid.Column="2">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  MinWidth="565">
+                            <DataGrid x:Name="dg_lyrics" Grid.Row="0" RowHeight="30" AutoGenerateColumns="False" CanUserResizeRows="False" ColumnWidth="*" BorderBrush="#FF2C2C2C" SelectionMode="Single" AlternatingRowBackground="#FFF3F3F3" HeadersVisibility="Column" CanUserAddRows="False" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" Background="#FFECECEC" EnableRowVirtualization="False" CanUserSortColumns="False" CanUserReorderColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="dg_lyrics_SelectionChanged" FontWeight="Bold" CanUserResizeColumns="False">
+                                <DataGrid.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#FFE59400" />
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#90E59400"/>
+                                </DataGrid.Resources>
+                                <DataGrid.ColumnHeaderStyle>
+                                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                                        <Setter Property="Background" Value="{StaticResource PrimaryBrush}" />
+                                        <Setter Property="Foreground" Value="#FFC1C1C1" />
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                        <Setter Property="FontFamily" Value="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" />
+                                        <Setter Property="FontSize" Value="15" />
+                                        <Setter Property="Height" Value="50" />
+                                        <Setter Property="Padding" Value="10,0,0,0" />
+                                    </Style>
+                                </DataGrid.ColumnHeaderStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn x:Name="col_status" Width="60">
+                                        <DataGridTemplateColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Top" HorizontalAlignment="Left" Height="25" Width="40" >
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsEnabled" Value="True">
+                                                                    <Setter Property="Opacity" Value="1" />
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Opacity" Value="0.3" />
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Path Stretch="Uniform" Width="16" Height="16" Fill="#FFC1C1C1" Data="M24,0C10.745,0 0,10.745 0,24 0,37.255 10.745,48 24,48 37.255,48 48,37.255 48,24 48,10.745 37.255,0 24,0z M4,24C4,12.954 12.954,4 24,4 28.85,4 33.293,5.727 36.755,8.597L8.597,36.755C5.727,33.293,4,28.85,4,24z M24,44C19.244,44,14.881,42.333,11.448,39.561L39.56,11.45C42.333,14.881 44,19.244 44,24 44,35.046 35.046,44 24,44z" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.HeaderTemplate>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border Width="10" Height="10" CornerRadius="100" Background="{Binding status}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Width="150">
+                                        <DataGridTemplateColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsEnabled" Value="True">
+                                                                    <Setter Property="Opacity" Value="1" />
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Opacity" Value="0.3" />
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <TextBlock Margin="4" Text="{DynamicResource time}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="14" FontWeight="Normal" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.HeaderTemplate>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBox x:Name="dg_time" Text="{Binding time}" AllowDrop="False" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" Padding="5,0,0,0" MaxLines="1" GotFocus="dg_time_GotFocus" LostFocus="dg_time_LostFocus" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" Background="{x:Null}" FontWeight="Bold" Style="{DynamicResource LyricsTextBox}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsEnabled" Value="True">
+                                                                    <Setter Property="Opacity" Value="1" />
+                                                                </Trigger>
+                                                                <Trigger Property="IsEnabled" Value="False">
+                                                                    <Setter Property="Opacity" Value="0.3" />
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <TextBlock Margin="4" Text="{DynamicResource lyrics}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="14" FontWeight="Normal" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.HeaderTemplate>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBox x:Name="dg_lyrics" Text="{Binding lyrics}" BorderBrush="{x:Null}" VerticalContentAlignment="Center" HorizontalContentAlignment="Stretch" Padding="5,0,0,0" GotFocus="dg_lyrics_GotFocus" LostFocus="dg_lyrics_LostFocus" MaxLines="1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" Background="{x:Null}" FontWeight="Normal" Style="{DynamicResource LyricsTextBox}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Grid Height="50" VerticalAlignment="Top" HorizontalAlignment="Right">
+                                <Grid Margin="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="10" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="10" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="10" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button ToolTip="{DynamicResource add}" Style="{StaticResource button_path}" x:Name="btn_add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="40" BorderBrush="{x:Null}" Click="btn_add_Click" Grid.Column="0">
+                                        <Path Stretch="Uniform" Width="24" Height="24" Fill="#FFC1C1C1" Data="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+                                    </Button>
+                                    <Button ToolTip="{DynamicResource remove}" Style="{StaticResource button_path}" x:Name="btn_remove" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="40" BorderBrush="{x:Null}" Click="btn_remove_Click" Grid.Column="2">
+                                        <Path Stretch="Uniform" Width="24" Height="24" Fill="#FFC1C1C1" Data="M19 13H5v-2h14v2z" />
+                                    </Button>
+                                    <Button ToolTip="{DynamicResource clear}" Style="{StaticResource button_path}" x:Name="btn_clear" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="40" BorderBrush="{x:Null}" Click="btn_clear_Click" Grid.Column="4">
+                                        <Path Stretch="Uniform" Width="24" Height="24" Fill="#FFC1C1C1" Data="M11.788303,9.184948A0.24987062,0.25,0,0,0,11.556001,9.434948A0.24987062,0.25,0,0,0,11.805872,9.684948A0.24987062,0.25,0,0,0,12.055742,9.434948A0.24987062,0.25,0,0,0,11.805872,9.184948A0.24987062,0.25,0,0,0,11.788302,9.184948z M11.799763,11.242A0.24987062,0.25,0,0,0,11.567461,11.492A0.24987062,0.25,0,0,0,11.817332,11.742A0.24987062,0.25,0,0,0,12.067201,11.492A0.24987062,0.25,0,0,0,11.817332,11.242A0.24987062,0.25,0,0,0,11.799762,11.242z M11.799763,9.840147A0.24987062,0.25,0,0,0,11.567461,10.090147A0.24987062,0.25,0,0,0,11.817332,10.340147A0.24987062,0.25,0,0,0,12.067201,10.090147A0.24987062,0.25,0,0,0,11.817332,9.840147A0.24987062,0.25,0,0,0,11.799762,9.840147z M11.809563,10.537412A0.24987062,0.25,0,0,0,11.577261,10.787412A0.24987062,0.25,0,0,0,11.827132,11.037412A0.24987062,0.25,0,0,0,12.077001,10.787412A0.24987062,0.25,0,0,0,11.827132,10.537412A0.24987062,0.25,0,0,0,11.809562,10.537412z M13.068359,4L13.068359,7 15.5,7 15.5,4z M13.068359,9L13.068359,12 15.5,12 15.5,19 18.5,19 18.5,12 21.5,12 21.5,9z M3.5097656,4.7988319A0.25,0.25,0,0,0,3.2773438,5.0488319A0.25,0.25,0,0,0,3.5273438,5.2988319A0.25,0.25,0,0,0,3.7773438,5.0488319A0.25,0.25,0,0,0,3.5273438,4.7988319A0.25,0.25,0,0,0,3.5097658,4.7988319z M2.8417969,4.7949219A0.25,0.25,0,0,0,2.609375,5.0449219A0.25,0.25,0,0,0,2.859375,5.2949219A0.25,0.25,0,0,0,3.109375,5.0449219A0.25,0.25,0,0,0,2.859375,4.7949219A0.25,0.25,0,0,0,2.841797,4.7949219z M3.5,4.0976562A0.25,0.25,0,0,0,3.2675781,4.3476562A0.25,0.25,0,0,0,3.5175781,4.5976562A0.25,0.25,0,0,0,3.7675781,4.3476562A0.25,0.25,0,0,0,3.5175781,4.0976562A0.25,0.25,0,0,0,3.5000001,4.0976562z M2.8320312,4.0976562A0.25,0.25,0,0,0,2.5996094,4.3476562A0.25,0.25,0,0,0,2.8496094,4.5976562A0.25,0.25,0,0,0,3.0996094,4.3476562A0.25,0.25,0,0,0,2.8496094,4.0976562A0.25,0.25,0,0,0,2.8320314,4.0976562z M3.5310351,6.304A0.25,0.25,0,0,0,3.2986133,6.554A0.25,0.25,0,0,0,3.5486133,6.804A0.25,0.25,0,0,0,3.7986133,6.554A0.25,0.25,0,0,0,3.5486133,6.304A0.25,0.25,0,0,0,3.5310353,6.304z M2.8630665,6.30009A0.25,0.25,0,0,0,2.6306446,6.55009A0.25,0.25,0,0,0,2.8806446,6.80009A0.25,0.25,0,0,0,3.1306446,6.55009A0.25,0.25,0,0,0,2.8806446,6.30009A0.25,0.25,0,0,0,2.8630666,6.30009z M3.5212696,5.6028243A0.25,0.25,0,0,0,3.2888477,5.8528243A0.25,0.25,0,0,0,3.5388477,6.1028243A0.25,0.25,0,0,0,3.7888477,5.8528243A0.25,0.25,0,0,0,3.5388477,5.6028243A0.25,0.25,0,0,0,3.5212697,5.6028243z M2.8533007,5.6028243A0.25,0.25,0,0,0,2.6208789,5.8528243A0.25,0.25,0,0,0,2.870879,6.1028243A0.25,0.25,0,0,0,3.1208789,5.8528243A0.25,0.25,0,0,0,2.870879,5.6028243A0.25,0.25,0,0,0,2.853301,5.6028243z M4.868157,4.7955167A0.25,0.25,0,0,0,4.6357352,5.0455167A0.25,0.25,0,0,0,4.8857352,5.2955167A0.25,0.25,0,0,0,5.1357352,5.0455167A0.25,0.25,0,0,0,4.8857352,4.7955167A0.25,0.25,0,0,0,4.8681572,4.7955167z M4.2001883,4.7916067A0.25,0.25,0,0,0,3.9677664,5.0416067A0.25,0.25,0,0,0,4.2177664,5.2916067A0.25,0.25,0,0,0,4.4677664,5.0416067A0.25,0.25,0,0,0,4.2177664,4.7916067A0.25,0.25,0,0,0,4.2001884,4.7916067z M4.8583914,4.094341A0.25,0.25,0,0,0,4.6259695,4.344341A0.25,0.25,0,0,0,4.8759695,4.594341A0.25,0.25,0,0,0,5.1259695,4.344341A0.25,0.25,0,0,0,4.8759695,4.094341A0.25,0.25,0,0,0,4.8583915,4.094341z M4.1904226,4.094341A0.25,0.25,0,0,0,3.9580008,4.344341A0.25,0.25,0,0,0,4.2080008,4.594341A0.25,0.25,0,0,0,4.4580008,4.344341A0.25,0.25,0,0,0,4.2080008,4.094341A0.25,0.25,0,0,0,4.1904228,4.094341z M4.8894265,6.3006848A0.25,0.25,0,0,0,4.6570047,6.5506848A0.25,0.25,0,0,0,4.9070047,6.8006848A0.25,0.25,0,0,0,5.1570047,6.5506848A0.25,0.25,0,0,0,4.9070047,6.3006848A0.25,0.25,0,0,0,4.8894267,6.3006848z M4.2214578,6.2967748A0.25,0.25,0,0,0,3.9890359,6.5467748A0.25,0.25,0,0,0,4.2390359,6.7967748A0.25,0.25,0,0,0,4.4890359,6.5467748A0.25,0.25,0,0,0,4.2390359,6.2967748A0.25,0.25,0,0,0,4.2214579,6.2967748z M4.8796609,5.5995091A0.25,0.25,0,0,0,4.647239,5.8495091A0.25,0.25,0,0,0,4.897239,6.0995091A0.25,0.25,0,0,0,5.147239,5.8495091A0.25,0.25,0,0,0,4.897239,5.5995091A0.25,0.25,0,0,0,4.879661,5.5995091z M4.2116921,5.5995091A0.25,0.25,0,0,0,3.9792703,5.8495091A0.25,0.25,0,0,0,4.2292703,6.0995091A0.25,0.25,0,0,0,4.4792703,5.8495091A0.25,0.25,0,0,0,4.2292703,5.5995091A0.25,0.25,0,0,0,4.2116923,5.5995091z M6.210157,4.8027382A0.25,0.25,0,0,0,5.9777352,5.0527382A0.25,0.25,0,0,0,6.2277352,5.3027382A0.25,0.25,0,0,0,6.4777352,5.0527382A0.25,0.25,0,0,0,6.2277352,4.8027382A0.25,0.25,0,0,0,6.2101572,4.8027382z M5.5421883,4.7988282A0.25,0.25,0,0,0,5.3097664,5.0488282A0.25,0.25,0,0,0,5.5597664,5.2988282A0.25,0.25,0,0,0,5.8097664,5.0488282A0.25,0.25,0,0,0,5.5597664,4.7988282A0.25,0.25,0,0,0,5.5421884,4.7988282z M6.2003914,4.1015625A0.25,0.25,0,0,0,5.9679695,4.3515625A0.25,0.25,0,0,0,6.2179695,4.6015625A0.25,0.25,0,0,0,6.4679695,4.3515625A0.25,0.25,0,0,0,6.2179695,4.1015625A0.25,0.25,0,0,0,6.2003915,4.1015625z M5.5324226,4.1015625A0.25,0.25,0,0,0,5.3000008,4.3515625A0.25,0.25,0,0,0,5.5500008,4.6015625A0.25,0.25,0,0,0,5.8000008,4.3515625A0.25,0.25,0,0,0,5.5500008,4.1015625A0.25,0.25,0,0,0,5.5324228,4.1015625z M6.2314265,6.3079063A0.25,0.25,0,0,0,5.9990047,6.5579063A0.25,0.25,0,0,0,6.2490047,6.8079063A0.25,0.25,0,0,0,6.4990047,6.5579063A0.25,0.25,0,0,0,6.2490047,6.3079063A0.25,0.25,0,0,0,6.2314267,6.3079063z M5.5634578,6.3039963A0.25,0.25,0,0,0,5.3310359,6.5539963A0.25,0.25,0,0,0,5.5810359,6.8039963A0.25,0.25,0,0,0,5.8310359,6.5539963A0.25,0.25,0,0,0,5.5810359,6.3039963A0.25,0.25,0,0,0,5.5634579,6.3039963z M6.2216609,5.6067306A0.25,0.25,0,0,0,5.989239,5.8567306A0.25,0.25,0,0,0,6.239239,6.1067306A0.25,0.25,0,0,0,6.489239,5.8567306A0.25,0.25,0,0,0,6.239239,5.6067306A0.25,0.25,0,0,0,6.221661,5.6067306z M5.5536921,5.6067306A0.25,0.25,0,0,0,5.3212703,5.8567306A0.25,0.25,0,0,0,5.5712703,6.1067306A0.25,0.25,0,0,0,5.8212703,5.8567306A0.25,0.25,0,0,0,5.5712703,5.6067306A0.25,0.25,0,0,0,5.5536923,5.6067306z M7.5685484,4.7994229A0.25,0.25,0,0,0,7.3361266,5.0494229A0.25,0.25,0,0,0,7.5861266,5.2994229A0.25,0.25,0,0,0,7.8361266,5.0494229A0.25,0.25,0,0,0,7.5861266,4.7994229A0.25,0.25,0,0,0,7.5685486,4.7994229z M6.9005797,4.7955129A0.25,0.25,0,0,0,6.6681578,5.0455129A0.25,0.25,0,0,0,6.9181578,5.2955129A0.25,0.25,0,0,0,7.1681578,5.0455129A0.25,0.25,0,0,0,6.9181578,4.7955129A0.25,0.25,0,0,0,6.9005798,4.7955129z M7.5587828,4.0982472A0.25,0.25,0,0,0,7.3263609,4.3482472A0.25,0.25,0,0,0,7.5763609,4.5982472A0.25,0.25,0,0,0,7.8263609,4.3482472A0.25,0.25,0,0,0,7.5763609,4.0982472A0.25,0.25,0,0,0,7.5587829,4.0982472z M6.890814,4.0982472A0.25,0.25,0,0,0,6.6583922,4.3482472A0.25,0.25,0,0,0,6.9083922,4.5982472A0.25,0.25,0,0,0,7.1583922,4.3482472A0.25,0.25,0,0,0,6.9083922,4.0982472A0.25,0.25,0,0,0,6.8908142,4.0982472z M7.5898179,6.3045911A0.25,0.25,0,0,0,7.3573961,6.5545911A0.25,0.25,0,0,0,7.6073961,6.8045911A0.25,0.25,0,0,0,7.8573961,6.5545911A0.25,0.25,0,0,0,7.6073961,6.3045911A0.25,0.25,0,0,0,7.5898181,6.3045911z M6.9218492,6.3006811A0.25,0.25,0,0,0,6.6894273,6.5506811A0.25,0.25,0,0,0,6.9394273,6.8006811A0.25,0.25,0,0,0,7.1894273,6.5506811A0.25,0.25,0,0,0,6.9394273,6.3006811A0.25,0.25,0,0,0,6.9218493,6.3006811z M7.5800523,5.6034154A0.25,0.25,0,0,0,7.3476304,5.8534154A0.25,0.25,0,0,0,7.5976304,6.1034154A0.25,0.25,0,0,0,7.8476304,5.8534154A0.25,0.25,0,0,0,7.5976304,5.6034154A0.25,0.25,0,0,0,7.5800524,5.6034154z M6.9120835,5.6034154A0.25,0.25,0,0,0,6.6796617,5.8534154A0.25,0.25,0,0,0,6.9296617,6.1034154A0.25,0.25,0,0,0,7.1796617,5.8534154A0.25,0.25,0,0,0,6.9296617,5.6034154A0.25,0.25,0,0,0,6.9120837,5.6034154z M8.868157,4.8116611A0.25,0.25,0,0,0,8.6357352,5.0616611A0.25,0.25,0,0,0,8.8857352,5.3116611A0.25,0.25,0,0,0,9.1357352,5.0616611A0.25,0.25,0,0,0,8.8857352,4.8116611A0.25,0.25,0,0,0,8.8681572,4.8116611z M8.2001883,4.8077511A0.25,0.25,0,0,0,7.9677664,5.0577511A0.25,0.25,0,0,0,8.2177664,5.3077511A0.25,0.25,0,0,0,8.4677664,5.0577511A0.25,0.25,0,0,0,8.2177664,4.8077511A0.25,0.25,0,0,0,8.2001884,4.8077511z M8.8583914,4.1104854A0.25,0.25,0,0,0,8.6259695,4.3604854A0.25,0.25,0,0,0,8.8759695,4.6104854A0.25,0.25,0,0,0,9.1259695,4.3604854A0.25,0.25,0,0,0,8.8759695,4.1104854A0.25,0.25,0,0,0,8.8583915,4.1104854z M8.1904226,4.1104854A0.25,0.25,0,0,0,7.9580008,4.3604854A0.25,0.25,0,0,0,8.2080008,4.6104854A0.25,0.25,0,0,0,8.4580008,4.3604854A0.25,0.25,0,0,0,8.2080008,4.1104854A0.25,0.25,0,0,0,8.1904228,4.1104854z M8.8894265,6.3168292A0.25,0.25,0,0,0,8.6570047,6.5668292A0.25,0.25,0,0,0,8.9070047,6.8168292A0.25,0.25,0,0,0,9.1570047,6.5668292A0.25,0.25,0,0,0,8.9070047,6.3168292A0.25,0.25,0,0,0,8.8894267,6.3168292z M8.2214578,6.3129192A0.25,0.25,0,0,0,7.9890359,6.5629192A0.25,0.25,0,0,0,8.2390359,6.8129192A0.25,0.25,0,0,0,8.4890359,6.5629192A0.25,0.25,0,0,0,8.2390359,6.3129192A0.25,0.25,0,0,0,8.2214579,6.3129192z M8.8796609,5.6156535A0.25,0.25,0,0,0,8.647239,5.8656535A0.25,0.25,0,0,0,8.897239,6.1156535A0.25,0.25,0,0,0,9.147239,5.8656535A0.25,0.25,0,0,0,8.897239,5.6156535A0.25,0.25,0,0,0,8.879661,5.6156535z M8.2116921,5.6156535A0.25,0.25,0,0,0,7.9792703,5.8656535A0.25,0.25,0,0,0,8.2292703,6.1156535A0.25,0.25,0,0,0,8.4792703,5.8656535A0.25,0.25,0,0,0,8.2292703,5.6156535A0.25,0.25,0,0,0,8.2116923,5.6156535z M10.226548,4.8083458A0.25,0.25,0,0,0,9.9941266,5.0583458A0.25,0.25,0,0,0,10.244127,5.3083458A0.25,0.25,0,0,0,10.494127,5.0583458A0.25,0.25,0,0,0,10.244127,4.8083458A0.25,0.25,0,0,0,10.226547,4.8083458z M9.5585797,4.8044358A0.25,0.25,0,0,0,9.3261578,5.0544358A0.25,0.25,0,0,0,9.5761578,5.3044358A0.25,0.25,0,0,0,9.8261578,5.0544358A0.25,0.25,0,0,0,9.5761578,4.8044358A0.25,0.25,0,0,0,9.5585798,4.8044358z M10.216783,4.1071701A0.25,0.25,0,0,0,9.9843609,4.3571701A0.25,0.25,0,0,0,10.234361,4.6071701A0.25,0.25,0,0,0,10.484361,4.3571701A0.25,0.25,0,0,0,10.234361,4.1071701A0.25,0.25,0,0,0,10.216781,4.1071701z M9.548814,4.1071701A0.25,0.25,0,0,0,9.3163922,4.3571701A0.25,0.25,0,0,0,9.5663922,4.6071701A0.25,0.25,0,0,0,9.8163922,4.3571701A0.25,0.25,0,0,0,9.5663922,4.1071701A0.25,0.25,0,0,0,9.5488142,4.1071701z M9.570084,5.6123383A0.25,0.25,0,0,0,9.3376622,5.8623383A0.25,0.25,0,0,0,9.5876622,6.1123383A0.25,0.25,0,0,0,9.8376622,5.8623383A0.25,0.25,0,0,0,9.5876622,5.6123383A0.25,0.25,0,0,0,9.5700842,5.6123383z M10.2380525,5.6123383A0.25,0.25,0,0,0,10.0056305,5.8623383A0.25,0.25,0,0,0,10.2556305,6.1123383A0.25,0.25,0,0,0,10.5056305,5.8623383A0.25,0.25,0,0,0,10.2556305,5.6123383A0.25,0.25,0,0,0,10.2380505,5.6123383z M9.5798492,6.309604A0.25,0.25,0,0,0,9.3474273,6.559604A0.25,0.25,0,0,0,9.5974273,6.809604A0.25,0.25,0,0,0,9.8474273,6.559604A0.25,0.25,0,0,0,9.5974273,6.309604A0.25,0.25,0,0,0,9.5798493,6.309604z M10.247817,6.313514A0.25,0.25,0,0,0,10.015396,6.563514A0.25,0.25,0,0,0,10.265396,6.813514A0.25,0.25,0,0,0,10.515396,6.563514A0.25,0.25,0,0,0,10.265396,6.313514A0.25,0.25,0,0,0,10.247816,6.313514z M11.619157,4.8323799A0.25,0.25,0,0,0,11.386735,5.0823799A0.25,0.25,0,0,0,11.636735,5.3323799A0.25,0.25,0,0,0,11.886735,5.0823799A0.25,0.25,0,0,0,11.636735,4.8323799A0.25,0.25,0,0,0,11.619155,4.8323799z M10.951188,4.8284699A0.25,0.25,0,0,0,10.718766,5.0784699A0.25,0.25,0,0,0,10.968766,5.3284699A0.25,0.25,0,0,0,11.218766,5.0784699A0.25,0.25,0,0,0,10.968766,4.8284699A0.25,0.25,0,0,0,10.951186,4.8284699z M11.609391,4.1312042A0.25,0.25,0,0,0,11.37697,4.3812042A0.25,0.25,0,0,0,11.62697,4.6312042A0.25,0.25,0,0,0,11.87697,4.3812042A0.25,0.25,0,0,0,11.62697,4.1312042A0.25,0.25,0,0,0,11.60939,4.1312042z M10.941423,4.1312042A0.25,0.25,0,0,0,10.709001,4.3812042A0.25,0.25,0,0,0,10.959001,4.6312042A0.25,0.25,0,0,0,11.209001,4.3812042A0.25,0.25,0,0,0,10.959001,4.1312042A0.25,0.25,0,0,0,10.941421,4.1312042z M11.640427,6.337548A0.25,0.25,0,0,0,11.408005,6.587548A0.25,0.25,0,0,0,11.658005,6.837548A0.25,0.25,0,0,0,11.908005,6.587548A0.25,0.25,0,0,0,11.658005,6.337548A0.25,0.25,0,0,0,11.640425,6.337548z M10.972458,6.333638A0.25,0.25,0,0,0,10.740036,6.583638A0.25,0.25,0,0,0,10.990036,6.833638A0.25,0.25,0,0,0,11.240036,6.583638A0.25,0.25,0,0,0,10.990036,6.333638A0.25,0.25,0,0,0,10.972456,6.333638z M11.630597,5.6363723A0.25,0.25,0,0,0,11.398175,5.8863723A0.25,0.25,0,0,0,11.648175,6.1363723A0.25,0.25,0,0,0,11.898175,5.8863723A0.25,0.25,0,0,0,11.648175,5.6363723A0.25,0.25,0,0,0,11.630595,5.6363723z M10.962628,5.6363723A0.25,0.25,0,0,0,10.730206,5.8863723A0.25,0.25,0,0,0,10.980206,6.1363723A0.25,0.25,0,0,0,11.230206,5.8863723A0.25,0.25,0,0,0,10.980206,5.6363723A0.25,0.25,0,0,0,10.962626,5.6363723z M12.29975,4.1278889A0.25,0.25,0,0,0,12.067328,4.3778889A0.25,0.25,0,0,0,12.317328,4.6278889A0.25,0.25,0,0,0,12.567328,4.3778889A0.25,0.25,0,0,0,12.317328,4.1278889A0.25,0.25,0,0,0,12.299748,4.1278889z M12.30955,4.8251546A0.25,0.25,0,0,0,12.077128,5.0751546A0.25,0.25,0,0,0,12.327128,5.3251546A0.25,0.25,0,0,0,12.577128,5.0751546A0.25,0.25,0,0,0,12.327128,4.8251546A0.25,0.25,0,0,0,12.309548,4.8251546z M12.32105,5.6330571A0.25,0.25,0,0,0,12.088628,5.8830571A0.25,0.25,0,0,0,12.338628,6.1330571A0.25,0.25,0,0,0,12.588628,5.8830571A0.25,0.25,0,0,0,12.338628,5.6330571A0.25,0.25,0,0,0,12.321048,5.6330571z M12.33085,6.3303228A0.25,0.25,0,0,0,12.098428,6.5803228A0.25,0.25,0,0,0,12.348428,6.8303228A0.25,0.25,0,0,0,12.598428,6.5803228A0.25,0.25,0,0,0,12.348428,6.3303228A0.25,0.25,0,0,0,12.330848,6.3303228z M8.9234878,7.7011757A0.25,0.25,0,0,0,8.691066,7.9511757A0.25,0.25,0,0,0,8.941066,8.2011757A0.25,0.25,0,0,0,9.191066,7.9511757A0.25,0.25,0,0,0,8.941066,7.7011757A0.25,0.25,0,0,0,8.923488,7.7011757z M8.2555191,7.6972657A0.25,0.25,0,0,0,8.0230972,7.9472657A0.25,0.25,0,0,0,8.2730972,8.1972657A0.25,0.25,0,0,0,8.5230972,7.9472657A0.25,0.25,0,0,0,8.2730972,7.6972657A0.25,0.25,0,0,0,8.2555192,7.6972657z M8.9137222,7A0.25,0.25,0,0,0,8.6813003,7.25A0.25,0.25,0,0,0,8.9313003,7.5A0.25,0.25,0,0,0,9.1813003,7.25A0.25,0.25,0,0,0,8.9313003,7A0.25,0.25,0,0,0,8.9137223,7z M8.2457534,7A0.25,0.25,0,0,0,8.0133316,7.25A0.25,0.25,0,0,0,8.2633316,7.5A0.25,0.25,0,0,0,8.5133316,7.25A0.25,0.25,0,0,0,8.2633316,7A0.25,0.25,0,0,0,8.2457536,7z M8.9447573,9.2063438A0.25,0.25,0,0,0,8.7123355,9.4563438A0.25,0.25,0,0,0,8.9623355,9.7063438A0.25,0.25,0,0,0,9.2123355,9.4563438A0.25,0.25,0,0,0,8.9623355,9.2063438A0.25,0.25,0,0,0,8.9447575,9.2063438z M8.2767886,9.2024338A0.25,0.25,0,0,0,8.0443667,9.4524338A0.25,0.25,0,0,0,8.2943667,9.7024338A0.25,0.25,0,0,0,8.5443667,9.4524338A0.25,0.25,0,0,0,8.2943667,9.2024338A0.25,0.25,0,0,0,8.2767887,9.2024338z M8.9349917,8.5051729A0.25,0.25,0,0,0,8.7025698,8.7551729A0.25,0.25,0,0,0,8.9525698,9.0051729A0.25,0.25,0,0,0,9.2025698,8.7551729A0.25,0.25,0,0,0,8.9525698,8.5051729A0.25,0.25,0,0,0,8.9349918,8.5051729z M8.2670229,8.5051729A0.25,0.25,0,0,0,8.0346011,8.7551729A0.25,0.25,0,0,0,8.2846011,9.0051729A0.25,0.25,0,0,0,8.5346011,8.7551729A0.25,0.25,0,0,0,8.2846011,8.5051729A0.25,0.25,0,0,0,8.2670231,8.5051729z M9.6254145,8.5018529A0.25,0.25,0,0,0,9.3929925,8.7518529A0.25,0.25,0,0,0,9.6429925,9.0018529A0.25,0.25,0,0,0,9.8929925,8.7518529A0.25,0.25,0,0,0,9.6429925,8.5018529A0.25,0.25,0,0,0,9.6254125,8.5018529z M9.6351845,9.1991186A0.25,0.25,0,0,0,9.4027625,9.4491186A0.25,0.25,0,0,0,9.6527625,9.6991186A0.25,0.25,0,0,0,9.9027625,9.4491186A0.25,0.25,0,0,0,9.6527625,9.1991186A0.25,0.25,0,0,0,9.6351825,9.1991186z M9.6254145,7A0.25,0.25,0,0,0,9.3929925,7.25A0.25,0.25,0,0,0,9.6429925,7.5A0.25,0.25,0,0,0,9.8929925,7.25A0.25,0.25,0,0,0,9.6429925,7A0.25,0.25,0,0,0,9.6254125,7z M9.6351845,7.6972557A0.25,0.25,0,0,0,9.4027625,7.9472557A0.25,0.25,0,0,0,9.6527625,8.1972557A0.25,0.25,0,0,0,9.9027625,7.9472557A0.25,0.25,0,0,0,9.6527625,7.6972557A0.25,0.25,0,0,0,9.6351825,7.6972557z M8.9787345,10.594505A0.25,0.25,0,0,0,8.7463127,10.844505A0.25,0.25,0,0,0,8.9963127,11.094505A0.25,0.25,0,0,0,9.2463127,10.844505A0.25,0.25,0,0,0,8.9963127,10.594505A0.25,0.25,0,0,0,8.9787347,10.594505z M8.3107658,10.590605A0.25,0.25,0,0,0,8.0783439,10.840605A0.25,0.25,0,0,0,8.3283439,11.090605A0.25,0.25,0,0,0,8.5783439,10.840605A0.25,0.25,0,0,0,8.3283439,10.590605A0.25,0.25,0,0,0,8.3107659,10.590605z M8.9689649,9.8933394A0.25,0.25,0,0,0,8.736543,10.143339A0.25,0.25,0,0,0,8.986543,10.393339A0.25,0.25,0,0,0,9.236543,10.143339A0.25,0.25,0,0,0,8.986543,9.8933394A0.25,0.25,0,0,0,8.968965,9.8933394z M8.3009961,9.8933394A0.25,0.25,0,0,0,8.0685743,10.143339A0.25,0.25,0,0,0,8.3185743,10.393339A0.25,0.25,0,0,0,8.5685743,10.143339A0.25,0.25,0,0,0,8.3185743,9.8933394A0.25,0.25,0,0,0,8.3009963,9.8933394z M9,11.999683A0.25,0.25,0,0,0,8.7675782,12.249683A0.25,0.25,0,0,0,9.0175782,12.499683A0.25,0.25,0,0,0,9.2675782,12.249683A0.25,0.25,0,0,0,9.0175782,11.999683A0.25,0.25,0,0,0,9.0000002,11.999683z M8.3320273,11.995783A0.25,0.25,0,0,0,8.0996054,12.245783A0.25,0.25,0,0,0,8.3496054,12.495783A0.25,0.25,0,0,0,8.5996054,12.245783A0.25,0.25,0,0,0,8.3496054,11.995783A0.25,0.25,0,0,0,8.3320274,11.995783z M8.9902304,11.298518A0.25,0.25,0,0,0,8.7578085,11.548518A0.25,0.25,0,0,0,9.0078085,11.798518A0.25,0.25,0,0,0,9.2578085,11.548518A0.25,0.25,0,0,0,9.0078085,11.298518A0.25,0.25,0,0,0,8.9902305,11.298518z M8.3222616,11.298518A0.25,0.25,0,0,0,8.0898398,11.548518A0.25,0.25,0,0,0,8.3398398,11.798518A0.25,0.25,0,0,0,8.5898398,11.548518A0.25,0.25,0,0,0,8.3398398,11.298518A0.25,0.25,0,0,0,8.3222618,11.298518z M9.6806532,11.295218A0.25,0.25,0,0,0,9.4482312,11.545218A0.25,0.25,0,0,0,9.6982312,11.795218A0.25,0.25,0,0,0,9.9482312,11.545218A0.25,0.25,0,0,0,9.6982312,11.295218A0.25,0.25,0,0,0,9.6806512,11.295218z M9.6904232,11.992484A0.25,0.25,0,0,0,9.4580012,12.242484A0.25,0.25,0,0,0,9.7080012,12.492484A0.25,0.25,0,0,0,9.9580012,12.242484A0.25,0.25,0,0,0,9.7080012,11.992484A0.25,0.25,0,0,0,9.6904212,11.992484z M9.6806532,9.8933652A0.25,0.25,0,0,0,9.4482312,10.143365A0.25,0.25,0,0,0,9.6982312,10.393365A0.25,0.25,0,0,0,9.9482312,10.143365A0.25,0.25,0,0,0,9.6982312,9.8933652A0.25,0.25,0,0,0,9.6806512,9.8933652z M9.6904232,10.590631A0.25,0.25,0,0,0,9.4580012,10.840631A0.25,0.25,0,0,0,9.7080012,11.090631A0.25,0.25,0,0,0,9.9580012,10.840631A0.25,0.25,0,0,0,9.7080012,10.590631A0.25,0.25,0,0,0,9.6904212,10.590631z M9,13.348832A0.25,0.25,0,0,0,8.7675782,13.598832A0.25,0.25,0,0,0,9.0175782,13.848832A0.25,0.25,0,0,0,9.2675782,13.598832A0.25,0.25,0,0,0,9.0175782,13.348832A0.25,0.25,0,0,0,9.0000002,13.348832z M8.3320313,13.344932A0.25,0.25,0,0,0,8.0996094,13.594932A0.25,0.25,0,0,0,8.3496094,13.844932A0.25,0.25,0,0,0,8.5996094,13.594932A0.25,0.25,0,0,0,8.3496094,13.344932A0.25,0.25,0,0,0,8.3320314,13.344932z M8.9902344,12.647667A0.25,0.25,0,0,0,8.7578125,12.897667A0.25,0.25,0,0,0,9.0078125,13.147667A0.25,0.25,0,0,0,9.2578125,12.897667A0.25,0.25,0,0,0,9.0078125,12.647667A0.25,0.25,0,0,0,8.9902345,12.647667z M8.3222656,12.647667A0.25,0.25,0,0,0,8.0898438,12.897667A0.25,0.25,0,0,0,8.3398438,13.147667A0.25,0.25,0,0,0,8.5898438,12.897667A0.25,0.25,0,0,0,8.3398438,12.647667A0.25,0.25,0,0,0,8.3222658,12.647667z M9.0212695,14.754A0.25,0.25,0,0,0,8.7888477,15.004A0.25,0.25,0,0,0,9.0388477,15.254A0.25,0.25,0,0,0,9.2888477,15.004A0.25,0.25,0,0,0,9.0388477,14.754A0.25,0.25,0,0,0,9.0212697,14.754z M8.3533008,14.7501A0.25,0.25,0,0,0,8.1208789,15.0001A0.25,0.25,0,0,0,8.3708789,15.2501A0.25,0.25,0,0,0,8.6208789,15.0001A0.25,0.25,0,0,0,8.3708789,14.7501A0.25,0.25,0,0,0,8.3533009,14.7501z M9.0114959,14.052794A0.25,0.25,0,0,0,8.779074,14.302794A0.25,0.25,0,0,0,9.029074,14.552794A0.25,0.25,0,0,0,9.279074,14.302794A0.25,0.25,0,0,0,9.029074,14.052794A0.25,0.25,0,0,0,9.011496,14.052794z M8.3435271,14.052794A0.25,0.25,0,0,0,8.1111053,14.302794A0.25,0.25,0,0,0,8.3611053,14.552794A0.25,0.25,0,0,0,8.6111053,14.302794A0.25,0.25,0,0,0,8.3611053,14.052794A0.25,0.25,0,0,0,8.3435273,14.052794z M9.7019187,14.049494A0.25,0.25,0,0,0,9.4694967,14.299494A0.25,0.25,0,0,0,9.7194967,14.549494A0.25,0.25,0,0,0,9.9694964,14.299494A0.25,0.25,0,0,0,9.7194967,14.049494A0.25,0.25,0,0,0,9.7019167,14.049494z M9.7116887,14.746759A0.25,0.25,0,0,0,9.4792667,14.996759A0.25,0.25,0,0,0,9.7292667,15.246759A0.25,0.25,0,0,0,9.9792664,14.996759A0.25,0.25,0,0,0,9.7292667,14.746759A0.25,0.25,0,0,0,9.7116867,14.746759z M9.7019187,12.647641A0.25,0.25,0,0,0,9.4694967,12.897641A0.25,0.25,0,0,0,9.7194967,13.147641A0.25,0.25,0,0,0,9.9694964,12.897641A0.25,0.25,0,0,0,9.7194967,12.647641A0.25,0.25,0,0,0,9.7019167,12.647641z M9.7116887,13.344906A0.25,0.25,0,0,0,9.4792667,13.594906A0.25,0.25,0,0,0,9.7292667,13.844906A0.25,0.25,0,0,0,9.9792664,13.594906A0.25,0.25,0,0,0,9.7292667,13.344906A0.25,0.25,0,0,0,9.7116867,13.344906z M9.020153,16.099657A0.25,0.25,0,0,0,8.7877312,16.349657A0.25,0.25,0,0,0,9.0377312,16.599657A0.25,0.25,0,0,0,9.2877312,16.349657A0.25,0.25,0,0,0,9.0377312,16.099657A0.25,0.25,0,0,0,9.0201532,16.099657z M8.3521843,16.095757A0.25,0.25,0,0,0,8.1197624,16.345757A0.25,0.25,0,0,0,8.3697624,16.595757A0.25,0.25,0,0,0,8.6197624,16.345757A0.25,0.25,0,0,0,8.3697624,16.095757A0.25,0.25,0,0,0,8.3521844,16.095757z M9.0103874,15.398491A0.25,0.25,0,0,0,8.7779655,15.648491A0.25,0.25,0,0,0,9.0279655,15.898491A0.25,0.25,0,0,0,9.2779655,15.648491A0.25,0.25,0,0,0,9.0279655,15.398491A0.25,0.25,0,0,0,9.0103875,15.398491z M8.3424186,15.398491A0.25,0.25,0,0,0,8.1099968,15.648491A0.25,0.25,0,0,0,8.3599968,15.898491A0.25,0.25,0,0,0,8.6099968,15.648491A0.25,0.25,0,0,0,8.3599968,15.398491A0.25,0.25,0,0,0,8.3424188,15.398491z M9.70081,15.395191A0.25,0.25,0,0,0,9.468388,15.645191A0.25,0.25,0,0,0,9.718388,15.895191A0.25,0.25,0,0,0,9.968388,15.645191A0.25,0.25,0,0,0,9.718388,15.395191A0.25,0.25,0,0,0,9.700808,15.395191z M9.71058,16.092457A0.25,0.25,0,0,0,9.478158,16.342457A0.25,0.25,0,0,0,9.728158,16.592457A0.25,0.25,0,0,0,9.978158,16.342457A0.25,0.25,0,0,0,9.728158,16.092457A0.25,0.25,0,0,0,9.710578,16.092457z M9.020157,17.448822A0.25,0.25,0,0,0,8.7877352,17.698822A0.25,0.25,0,0,0,9.0377352,17.948822A0.25,0.25,0,0,0,9.2877352,17.698822A0.25,0.25,0,0,0,9.0377352,17.448822A0.25,0.25,0,0,0,9.0201572,17.448822z M8.3521883,17.444922A0.25,0.25,0,0,0,8.1197664,17.694922A0.25,0.25,0,0,0,8.3697664,17.944922A0.25,0.25,0,0,0,8.6197664,17.694922A0.25,0.25,0,0,0,8.3697664,17.444922A0.25,0.25,0,0,0,8.3521884,17.444922z M9.0103914,16.747656A0.25,0.25,0,0,0,8.7779695,16.997656A0.25,0.25,0,0,0,9.0279695,17.247656A0.25,0.25,0,0,0,9.2779695,16.997656A0.25,0.25,0,0,0,9.0279695,16.747656A0.25,0.25,0,0,0,9.0103915,16.747656z M8.3424226,16.747656A0.25,0.25,0,0,0,8.1100008,16.997656A0.25,0.25,0,0,0,8.3600008,17.247656A0.25,0.25,0,0,0,8.6100008,16.997656A0.25,0.25,0,0,0,8.3600008,16.747656A0.25,0.25,0,0,0,8.3424228,16.747656z M9.72208,18.149509A0.25,0.25,0,0,0,9.489658,18.399509A0.25,0.25,0,0,0,9.739658,18.649509A0.25,0.25,0,0,0,9.989657,18.399509A0.25,0.25,0,0,0,9.739658,18.149509A0.25,0.25,0,0,0,9.722078,18.149509z M9.72208,16.747656A0.25,0.25,0,0,0,9.489658,16.997656A0.25,0.25,0,0,0,9.739658,17.247656A0.25,0.25,0,0,0,9.989657,16.997656A0.25,0.25,0,0,0,9.739658,16.747656A0.25,0.25,0,0,0,9.722078,16.747656z M9.73185,17.444921A0.25,0.25,0,0,0,9.499428,17.694921A0.25,0.25,0,0,0,9.749428,17.944921A0.25,0.25,0,0,0,9.999427,17.694921A0.25,0.25,0,0,0,9.749428,17.444921A0.25,0.25,0,0,0,9.731848,17.444921z M9.000002,18.160555A0.25,0.25,0,0,0,8.7675799,18.410555A0.25,0.25,0,0,0,9.01758,18.660555A0.25,0.25,0,0,0,9.267579,18.410555A0.25,0.25,0,0,0,9.01758,18.160555A0.25,0.25,0,0,0,9,18.160555z M8.3461703,18.148465A0.25,0.25,0,0,0,8.1137483,18.398465A0.25,0.25,0,0,0,8.3637483,18.648465A0.25,0.25,0,0,0,8.6137469,18.398465A0.25,0.25,0,0,0,8.3637483,18.148465A0.25,0.25,0,0,0,8.3461683,18.148465z M12.5,9.189948A0.25,0.25,0,0,0,12.267578,9.439948A0.25,0.25,0,0,0,12.517578,9.689948A0.25,0.25,0,0,0,12.767578,9.439948A0.25,0.25,0,0,0,12.517578,9.189948A0.25,0.25,0,0,0,12.499998,9.189948z M12.51147,11.247A0.25,0.25,0,0,0,12.279048,11.497A0.25,0.25,0,0,0,12.529048,11.747A0.25,0.25,0,0,0,12.779047,11.497A0.25,0.25,0,0,0,12.529048,11.247A0.25,0.25,0,0,0,12.511468,11.247z M12.51147,9.845147A0.25,0.25,0,0,0,12.279048,10.095147A0.25,0.25,0,0,0,12.529048,10.345147A0.25,0.25,0,0,0,12.779047,10.095147A0.25,0.25,0,0,0,12.529048,9.845147A0.25,0.25,0,0,0,12.511468,9.845147z M12.52127,10.542412A0.25,0.25,0,0,0,12.288848,10.792412A0.25,0.25,0,0,0,12.538848,11.042412A0.25,0.25,0,0,0,12.788847,10.792412A0.25,0.25,0,0,0,12.538848,10.542412A0.25,0.25,0,0,0,12.521268,10.542412z M7.6323301,8.5018529A0.25,0.25,0,0,0,7.3999081,8.7518529A0.25,0.25,0,0,0,7.6499081,9.0018529A0.25,0.25,0,0,0,7.8999081,8.7518529A0.25,0.25,0,0,0,7.6499081,8.5018529A0.25,0.25,0,0,0,7.6323281,8.5018529z M7.6421001,9.1991186A0.25,0.25,0,0,0,7.4096781,9.4491186A0.25,0.25,0,0,0,7.6596781,9.6991186A0.25,0.25,0,0,0,7.9096781,9.4491186A0.25,0.25,0,0,0,7.6596781,9.1991186A0.25,0.25,0,0,0,7.6420981,9.1991186z M7.6323301,7A0.25,0.25,0,0,0,7.3999081,7.25A0.25,0.25,0,0,0,7.6499081,7.5A0.25,0.25,0,0,0,7.8999081,7.25A0.25,0.25,0,0,0,7.6499081,7A0.25,0.25,0,0,0,7.6323281,7z M7.6421001,7.6972657A0.25,0.25,0,0,0,7.4096781,7.9472657A0.25,0.25,0,0,0,7.6596781,8.1972657A0.25,0.25,0,0,0,7.9096781,7.9472657A0.25,0.25,0,0,0,7.6596781,7.6972657A0.25,0.25,0,0,0,7.6420981,7.6972657z M7.6875621,11.295192A0.25,0.25,0,0,0,7.4551401,11.545192A0.25,0.25,0,0,0,7.7051401,11.795192A0.25,0.25,0,0,0,7.9551401,11.545192A0.25,0.25,0,0,0,7.7051401,11.295192A0.25,0.25,0,0,0,7.6875601,11.295192z M7.6973321,11.992458A0.25,0.25,0,0,0,7.4649101,12.242458A0.25,0.25,0,0,0,7.7149101,12.492458A0.25,0.25,0,0,0,7.9649101,12.242458A0.25,0.25,0,0,0,7.7149101,11.992458A0.25,0.25,0,0,0,7.6973301,11.992458z M7.6875621,9.8933392A0.25,0.25,0,0,0,7.4551401,10.143339A0.25,0.25,0,0,0,7.7051401,10.393339A0.25,0.25,0,0,0,7.9551401,10.143339A0.25,0.25,0,0,0,7.7051401,9.8933392A0.25,0.25,0,0,0,7.6875601,9.8933392z M7.6973321,10.590605A0.25,0.25,0,0,0,7.4649101,10.840605A0.25,0.25,0,0,0,7.7149101,11.090605A0.25,0.25,0,0,0,7.9649101,10.840605A0.25,0.25,0,0,0,7.7149101,10.590605A0.25,0.25,0,0,0,7.6973301,10.590605z M7.7088351,14.04951A0.25,0.25,0,0,0,7.4764131,14.29951A0.25,0.25,0,0,0,7.7264131,14.54951A0.25,0.25,0,0,0,7.9764128,14.29951A0.25,0.25,0,0,0,7.7264131,14.04951A0.25,0.25,0,0,0,7.7088331,14.04951z M7.7186051,14.746775A0.25,0.25,0,0,0,7.4861831,14.996775A0.25,0.25,0,0,0,7.7361831,15.246775A0.25,0.25,0,0,0,7.9861828,14.996775A0.25,0.25,0,0,0,7.7361831,14.746775A0.25,0.25,0,0,0,7.7186031,14.746775z M7.7088351,12.647657A0.25,0.25,0,0,0,7.4764131,12.897657A0.25,0.25,0,0,0,7.7264131,13.147657A0.25,0.25,0,0,0,7.9764128,12.897657A0.25,0.25,0,0,0,7.7264131,12.647657A0.25,0.25,0,0,0,7.7088331,12.647657z M7.7186051,13.344922A0.25,0.25,0,0,0,7.4861831,13.594922A0.25,0.25,0,0,0,7.7361831,13.844922A0.25,0.25,0,0,0,7.9861828,13.594922A0.25,0.25,0,0,0,7.7361831,13.344922A0.25,0.25,0,0,0,7.7186031,13.344922z M7.7077261,15.395191A0.25,0.25,0,0,0,7.4753041,15.645191A0.25,0.25,0,0,0,7.7253041,15.895191A0.25,0.25,0,0,0,7.9753041,15.645191A0.25,0.25,0,0,0,7.7253041,15.395191A0.25,0.25,0,0,0,7.7077241,15.395191z M7.7174961,16.092457A0.25,0.25,0,0,0,7.4850741,16.342457A0.25,0.25,0,0,0,7.7350741,16.592457A0.25,0.25,0,0,0,7.9850741,16.342457A0.25,0.25,0,0,0,7.7350741,16.092457A0.25,0.25,0,0,0,7.7174941,16.092457z M7.7290001,18.149509A0.25,0.25,0,0,0,7.4965781,18.399509A0.25,0.25,0,0,0,7.7465781,18.649509A0.25,0.25,0,0,0,7.9965771,18.399509A0.25,0.25,0,0,0,7.7465781,18.149509A0.25,0.25,0,0,0,7.7289981,18.149509z M7.7290001,16.747656A0.25,0.25,0,0,0,7.4965781,16.997656A0.25,0.25,0,0,0,7.7465781,17.247656A0.25,0.25,0,0,0,7.9965771,16.997656A0.25,0.25,0,0,0,7.7465781,16.747656A0.25,0.25,0,0,0,7.7289981,16.747656z M7.7387701,17.444921A0.25,0.25,0,0,0,7.5063481,17.694921A0.25,0.25,0,0,0,7.7563481,17.944921A0.25,0.25,0,0,0,8.0063471,17.694921A0.25,0.25,0,0,0,7.7563481,17.444921A0.25,0.25,0,0,0,7.7387681,17.444921z" />
+                                    </Button>
+                                    <Border Opacity="0.3" CornerRadius="1" Height="30" Width="3" Grid.Column="5" Background="#FFC1C1C1"/>
+                                    <Button ToolTip="{DynamicResource sort}" Style="{StaticResource button_path}" x:Name="btn_sort" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="40" BorderBrush="{x:Null}" Click="btn_sort_Click" Grid.Column="6">
+                                        <Path Stretch="Uniform" Width="24" Height="24" Fill="#FFC1C1C1" Data="M14.94,4.66L10.22,4.66 12.58,2.3z M10.25,19.37L14.91,19.37 12.58,21.7z M6.1,6.27L1.6,17.73 3.44,17.73 4.36,15.28 9.47,15.28 10.39,17.73 12.23,17.73 7.74,6.27 6.1,6.27z M4.97,13.64L6.91,8.46 8.85,13.64 4.97,13.64z M15.73,16.14L21.85,16.14 21.85,17.73 13.32,17.73 13.32,16.44 19.24,7.88 13.36,7.88 13.36,6.28 21.66,6.28 21.66,7.54 15.73,16.14z" />
+                                    </Button>
+                                    <Button ToolTip="{DynamicResource remove_all}" Style="{StaticResource button_path}" x:Name="btn_remove_all" HorizontalAlignment="Left" VerticalAlignment="Top" Width="43" Height="40" BorderBrush="{x:Null}" Click="btn_remove_all_Click" Grid.Column="8">
+                                        <Path Stretch="Uniform" Width="24" Height="24" Fill="#FFC1C1C1" Data="M15,16L19,16 19,18 15,18z M15,8L22,8 22,10 15,10z M15,12L21,12 21,14 15,14z M3,18C3,19.1,3.9,20,5,20L11,20C12.1,20,13,19.1,13,18L13,8 3,8 3,18z M14,5L11,5 10,4 6,4 5,5 2,5 2,7 14,7z" />
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF2C2C2C" Grid.Row="2" Effect="{DynamicResource z-depth1}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                </Grid.ColumnDefinitions>
+                <Slider x:Name="seek_position" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Grid.Column="1" ValueChanged="seek_position_ValueChanged" Maximum="1000" Thumb.DragStarted="seek_position_DragStarted" Thumb.DragCompleted="seek_position_DragCompleted" />
+                <Border Grid.Column="1" Background="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <Grid x:Name="tab_player" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="10,48,0,0" Width="910">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="126" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="500*" />
+                    </Grid.ColumnDefinitions>
+                    <Border CornerRadius="3" Grid.Column="0" Background="#FF3C3C3C">
+                        <TextBlock x:Name="tb_position" Text="00:00" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFC1C1C1" FontWeight="Bold" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="20" Background="{x:Null}" />
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="True">
+                                        <Setter Property="Opacity" Value="1" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.3" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                    <Button Style="{StaticResource button_path}" x:Name="btn_sync" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" BorderBrush="{x:Null}" Click="btn_sync_Click" MouseLeftButtonUp="btn_sync_MouseLeftButtonUp">
+                        <Path Stretch="Uniform" Width="26" Height="26" Fill="#FFC1C1C1" Data="M12,0L6,0 6,2 12,2 12,0 12,0z M8,13L10,13 10,7 8,7 8,13 8,13z M16,6.4L17.5,5C17,4.5,16.5,4,16,3.6L14.6,5C13.1,3.8 11.1,3 9,3 4,3 1.77635684E-15,7 1.77635684E-15,12 1.77635684E-15,17 4,21 9,21 14,21 18,17 18,12 18,9.9 17.3,7.9 16,6.4L16,6.4z M9,19C5.1,19 2,15.9 2,12 2,8.1 5.1,5 9,5 12.9,5 16,8.1 16,12 16,15.9 12.9,19 9,19L9,19z" />
+                    </Button>
+                    <Grid Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button Style="{StaticResource button_path}" x:Name="btn_up" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Width="40" Height="20" BorderBrush="{x:Null}" Click="btn_up_Click" Grid.RowSpan="2">
+                            <Path Stretch="Uniform" Width="18" Height="18" Fill="#FFC1C1C1" Data="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+                        </Button>
+
+                        <Button Style="{StaticResource button_path}" x:Name="btn_down" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Width="40" Height="20" BorderBrush="{x:Null}" Click="btn_down_Click"  Grid.RowSpan="2">
+                            <Path Stretch="Uniform" Width="18" Height="18" Fill="#FFC1C1C1" Data="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
+                        </Button>
+                    </Grid>
+                    <Border Opacity="0.3" CornerRadius="1" Height="30" Width="3" Grid.Column="5" Background="#FFC1C1C1"/>
+                    <Button Style="{StaticResource button_path}" x:Name="btn_play" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Grid.Column="6" BorderBrush="{x:Null}" Click="btn_play_Click">
+                        <Path Stretch="Uniform" Width="24" Height="24" Fill="#FFC1C1C1" Data="M426.65662 232.9l-278.4 -165.7c-3.4 -2 -6.9 -3.2 -10.9 -3.2 -10.9 0 -19.8 9 -19.8 20l-0.1 0 0 344 0.1 0c0 11 8.9 20 19.8 20 4.1 0 7.5 -1.4 11.2 -3.4l278.1 -165.5c6.6 -5.5 10.8 -13.8 10.8 -23.1 0 -9.3 -4.2 -17.5 -10.8 -23.1z" />
+                    </Button>
+                    <Button Style="{StaticResource button_path}" x:Name="btn_pause" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Grid.Column="8" BorderBrush="{x:Null}" Click="btn_pause_Click">
+                        <Path Stretch="Uniform" Width="24" Height="24" Fill="#FFC1C1C1" Data="M371.8 86l-71.6 0C293.5 86 288 90.78125 288 96.713542l0 318.484378c0 5.9323 5.4 10.80209 12.2 10.80209l71.6 0c6.7 0 12.2 -4.78125 12.2 -10.80209L384 96.713542C384 90.78125 378.6 86 371.8 86ZM224 415.19792L224 96.713542C224 90.78125 218.6 86 211.8 86l-71.6 0C133.4 86 128 90.78125 128 96.713542l0 318.484378c0 5.9323 5.4 10.80209 12.2 10.80209l71.6 0c6.8 0 12.2 -4.78125 12.2 -10.80209z" />
+                    </Button>
+                    <Button Style="{StaticResource button_path}" x:Name="btn_stop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Grid.Column="10" BorderBrush="{x:Null}" Click="btn_stop_Click">
+                        <Path Stretch="Uniform" Width="24" Height="24" Fill="#FFC1C1C1" Data="M16,6H8C6.9,6,6,6.9,6,8v8c0,1.1,0.9,2,2,2h8c1.1,0,2-0.9,2-2V8C18,6.9,17.1,6,16,6z" />
+                    </Button>
+                    <Grid Grid.Column="12">
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="True">
+                                        <Setter Property="Opacity" Value="1" />
+                                    </Trigger>
+
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Opacity" Value="0.3" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="tb_info_title" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="#FFC1C1C1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontWeight="Bold" Text="..." Margin="0,0,0,11" />
+                        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1">
+                            <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                                <TextBlock Margin="4" x:Name="tb_info_frequency" Text="0 KHz" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="11" />
+                            </Border>
+                            <Grid Width="10"></Grid>
+                            <Border CornerRadius="3" Background="#FF3C3C3C" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                                <TextBlock Margin="4" x:Name="tb_info_bitrate" Text="0 Kb/s" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFC1C1C1" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" FontSize="11" />
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1" Margin="0,48,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="150" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btn_volume" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50" Background="#00000000" BorderBrush="{x:Null}" Click="btn_volume_Click">
+                        <Path Stretch="Uniform" Width="24" Height="24" Fill="#FFC1C1C1" Data="M17.138,5.824c-0.449,0-0.905,0.152-1.356,0.453l-2.672,1.781C12.357,8.561,10.904,9,10,9c-1.654,0-3,1.346-3,3v2   c0,1.654,1.346,3,3,3c0.904,0,2.357,0.439,3.109,0.941l2.672,1.781c0.451,0.301,0.907,0.453,1.356,0.453   C18.035,20.176,19,19.495,19,18V8C19,6.505,18.035,5.824,17.138,5.824z M14,16.146C12.907,15.495,11.211,15,10,15   c-0.552,0-1-0.448-1-1v-2c0-0.552,0.448-1,1-1c1.211,0,2.907-0.495,4-1.146V16.146z M17,18c0,0.046-0.002,0.086-0.006,0.12   c-0.03-0.016-0.065-0.036-0.104-0.062L15,16.798V9.202l1.891-1.261c0.038-0.025,0.073-0.046,0.104-0.062   C16.998,7.914,17,7.954,17,8V18z" />
+                    </Button>
+                    <Slider x:Name="seek_volume" Grid.Column="2" VerticalAlignment="Center" ValueChanged="seek_volume_ValueChanged" Thumb.DragCompleted="seek_volume_DragCompleted" Maximum="1" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Visibility="Collapsed" x:Name="tab_drop" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#E5FFFFFF" DragOver="Grid_DragOver" Drop="Grid_Drop" DragLeave="Grid_DragLeave" >
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                        <BeginStoryboard Storyboard="{StaticResource DropAnimation}"/>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Border x:Name="border" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,15,30,15" BorderThickness="3" CornerRadius="10" Width="165" Height="182" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Border.RenderTransform>
+                    <Border.BorderBrush>
+                        <DrawingBrush Viewport="0,0,14,14" ViewportUnits="Absolute" Stretch="UniformToFill" TileMode="Tile">
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <GeometryDrawing Brush="#FF666666">
+                                        <GeometryDrawing.Geometry>
+                                            <GeometryGroup>
+                                                <RectangleGeometry Rect="0,0,50,50" />
+                                                <RectangleGeometry Rect="50,50,50,50" />
+                                            </GeometryGroup>
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Border.BorderBrush>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Path Grid.Row="0" Width="100" Height="100" Stretch="Uniform" Data="M6,2C4.9,2,4.01,2.9,4.01,4L4,20c0,1.1,0.89,2,1.99,2H18c1.1,0,2-0.9,2-2V8.83c0-0.53-0.21-1.04-0.59-1.41l-4.83-4.83 C14.21,2.21,13.7,2,13.17,2H6z M13,8V3.5L18.5,9H14C13.45,9,13,8.55,13,8z" Fill="#FF666666"></Path>
+                        <TextBlock Grid.Row="2" x:Name="tb_drop_details" Text="Drop files" FontSize="22" FontWeight="Bold" FontFamily="/Lyrics 3 Tag Editor;component/Themes/Fonts/Roboto/#Roboto" Grid.RowSpan="2" Foreground="#FF666666"></TextBlock>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
